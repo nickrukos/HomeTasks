@@ -8,7 +8,7 @@ public class Task4
     {
         int userAnswer;
         int minValue = 2, maxValue = 100;
-        int javaValue = (maxValue - minValue)/2;
+        int javaValue = (maxValue - minValue)/2 + 1;
         Scanner userValue = new Scanner(System.in);
         System.out.println("Загадайте целое число в диапазоне [2;100]");
         while (true)
@@ -24,10 +24,10 @@ public class Task4
             System.out.println("Ваше число больше " + javaValue + "? 0- НЕТ, 1 - ДА");
             userAnswer = userValue.nextInt();
             if (userAnswer == 1) {
-                minValue = javaValue;
+                minValue = javaValue + 1;
                 javaValue = minValue + (maxValue - minValue) / 2;
             } else {
-                maxValue = javaValue;
+                maxValue = javaValue - 1;
                 javaValue = minValue + (maxValue - minValue) / 2;
             }
 
