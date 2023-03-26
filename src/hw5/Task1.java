@@ -11,7 +11,7 @@ public class Task1
         System.out.println("¬ведите строку, дл€ выхода наберите \"exit\":");
         Scanner vvod = new Scanner(System.in);
         String str = vvod.nextLine();
-        while (str.equalsIgnoreCase("exit") == false)
+        while (!str.equalsIgnoreCase("exit"))
         {
             str = str.strip();
             strDop = str.substring(0,1);

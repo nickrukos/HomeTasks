@@ -19,23 +19,23 @@ public class Task6
         while (i < arr.length)
         {
             str = scn.nextLine().trim();
-            if (str.equalsIgnoreCase("exit") == true) break;
+            if (str.equalsIgnoreCase("exit")) break;
             for (int j = 0; j < i; j++)
             {
-                if (arr[j].equalsIgnoreCase(str) == true)
+                if (arr[j].equalsIgnoreCase(str))
                 {
                     System.out.println("Такое слово уже есть!");
                     haveWords = true;
                     break;
                 }
             }
-            if(haveWords == false)
+            if(!haveWords)
             {
                 arr[i] = str;
                 i++;
             }
         }
-        if(str.equalsIgnoreCase("exit") == false)
+        if(!str.equalsIgnoreCase("exit"))
         {
             System.out.println("Массив заполнен:");
             System.out.println(Arrays.toString(arr));
