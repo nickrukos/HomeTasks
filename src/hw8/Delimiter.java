@@ -9,6 +9,7 @@ public class Delimiter extends AppDop implements AppLogger
 
         super(appLogger);
     }
+    @Override
     public void log(String str)
     {
         str = "===" + str + "===";

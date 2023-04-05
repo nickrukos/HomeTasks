@@ -2,6 +2,7 @@ package hw8;
 
 public class ConsoleWriter implements AppLogger
 {
+    @Override
     public void log(String data)
     {
         System.out.println("===========================================");

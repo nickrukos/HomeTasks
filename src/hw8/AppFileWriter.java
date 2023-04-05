@@ -17,6 +17,7 @@ public class AppFileWriter implements AppLogger
             throw new IllegalArgumentException("”казанный файл не существует или указан каталог");
         }
     }
+    @Override
     public void log(String data)
     {
         try
