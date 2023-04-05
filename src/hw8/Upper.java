@@ -30,9 +30,10 @@ public class Upper extends AppLogger
         }
         logger = (AppLogger) delimiter;
     }
+    @Override
     public void log(String str)
     {
-        str.toUpperCase(Locale.ROOT);
+        str = str.toUpperCase(Locale.ROOT);
         if(logger instanceof AppFileWriter)
         {
             AppFileWriter fileWriter = new AppFileWriter();

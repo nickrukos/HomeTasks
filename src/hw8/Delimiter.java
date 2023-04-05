@@ -30,6 +30,7 @@ public class Delimiter extends AppLogger
         }
         logger = (AppLogger) upper;
     }
+    @Override
     public void log(String str)
     {
         str = "===" + str + "===";
