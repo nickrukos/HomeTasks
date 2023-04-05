@@ -1,5 +1,6 @@
 package hw8;
 
-public class AppLogger
+public interface AppLogger
 {
+    abstract public void log(String str);
 }

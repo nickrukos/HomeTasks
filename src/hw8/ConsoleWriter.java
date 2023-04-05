@@ -1,6 +1,6 @@
 package hw8;
 
-public class ConsoleWriter extends AppLogger
+public class ConsoleWriter implements AppLogger
 {
     public void log(String data)
     {

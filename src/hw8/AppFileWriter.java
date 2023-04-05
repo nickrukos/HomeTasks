@@ -6,7 +6,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 
-public class AppFileWriter extends AppLogger
+public class AppFileWriter implements AppLogger
 {
     private final String path = "file_out.txt";
     public AppFileWriter()
