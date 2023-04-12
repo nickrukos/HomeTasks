@@ -1,67 +1,74 @@
 package Curs1v2;
 
-import Curs1.Abonement;
-import Curs1.FitnessZone;
-import Curs1.TypeAbon;
-import Curs1.*;
-
 import java.time.LocalDate;
 import java.time.LocalTime;
 
 public class Client
 {
-    private Curs1.FitnessZone zone;        //желаема€ зона
-    private Abonement abonement;     //абонемент клиента
+    private LocalDate currentDate;      //ƒата €вки посетител€
+    private LocalTime currentTime;      //¬рем€ €вки посетител€
+    private FitnessZone wishZone;       //желаема€ зона
+    private Abonement abonement;        //абонемент посетител€
+
+    public LocalDate getCurrentDate() {
+        return currentDate;
+    }
+
+    public LocalTime getCurrentTime() {
+        return currentTime;
+    }
+
+    public FitnessZone getWishZone() {
+        return wishZone;
+    }
+
+    public Abonement getAbonement() {
+        return abonement;
+    }
+
     public Client(
-            FitnessZone zone, TypeAbon typeAbon,
+            String number, FitnessZone zone, TypeAbon typeAbon,
             LocalDate beginDate, LocalDate endDate, String customer, LocalDate birthDate,
             LocalDate currentDate, LocalTime currentTime
                  )
     {
         if(zone == null)
         {
-            throw new IllegalArgumentException("«оны абонемента не существует");
+            throw new IllegalArgumentException("There is no area");
         }
         if(typeAbon == null)
         {
-            throw new IllegalArgumentException("“ипа абонемента не существует");
+            throw new IllegalArgumentException("There is no abonement type");
         }
         if(beginDate == null)
         {
-            throw new IllegalArgumentException("Ќесуществующее значение даты начала абонемента!");
+            throw new IllegalArgumentException("There is no start date of abonement");
         }
         if(endDate == null)
         {
-            throw new IllegalArgumentException("Ќесуществующее значение даты окончани€ абонемента!");
+            throw new IllegalArgumentException("There is no finish date of abonement!");
         }
         if(birthDate == null)
         {
-            throw new IllegalArgumentException("Ќесуществующее значение даты рождени€ посетител€!");
+            throw new IllegalArgumentException("There is no birth date");
         }
         if(!beginDate.isBefore(endDate))
         {
-            throw new IllegalArgumentException("ƒата окончани€ абонемента меньше даты начала!");
+            throw new IllegalArgumentException("Finish date is less than start date");
         }
         if(currentDate == null)
         {
-            throw new IllegalArgumentException("Ќет даты прихода посетител€");
+            throw new IllegalArgumentException("There is no current date");
         }
         if(currentTime == null)
         {
             throw new IllegalArgumentException("Ќет времени прихода посетител€");
         }
-        this.zone = zone;
-        switch (typeAbon)
-        {
-            case DAILY:
-                abonement = new DailyAbon(beginDate,endDate,customer,birthDate);
-                break;
-            case FULL:
-                abonement = new FullAbon(beginDate,endDate,customer,birthDate);
-                break;
-            case SHOT:
-                abonement = new ShotAbon(beginDate,endDate,customer,birthDate);
-                break;
-        }
+        this.wishZone = zone;
+        this.currentDate = currentDate;
+        this.currentTime = currentTime;
+        this.abonement = new Abonement(number, beginDate, endDate, customer,birthDate, typeAbon);
+
+
     }
 }
