@@ -5,10 +5,10 @@ import java.time.LocalTime;
 
 public class Client
 {
-    private LocalDate currentDate;      //ƒата €вки посетител€
-    private LocalTime currentTime;      //¬рем€ €вки посетител€
-    private FitnessZone wishZone;       //желаема€ зона
-    private Abonement abonement;        //абонемент посетител€
+    public final LocalDate currentDate;      //ƒата €вки посетител€
+    public final LocalTime currentTime;      //¬рем€ €вки посетител€
+    public final FitnessZone wishZone;       //желаема€ зона
+    public final Abonement abonement;        //абонемент посетител€
 
     public LocalDate getCurrentDate() {
         return currentDate;
@@ -68,7 +68,6 @@ public class Client
         this.currentDate = currentDate;
         this.currentTime = currentTime;
         this.abonement = new Abonement(number, beginDate, endDate, customer,birthDate, typeAbon);
-
-
     }
+
 }
