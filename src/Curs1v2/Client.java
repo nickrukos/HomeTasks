@@ -28,7 +28,7 @@ public class Client
 
     public Client(
             String number, FitnessZone zone, TypeAbon typeAbon,
-            LocalDate beginDate, LocalDate endDate, String customer, LocalDate birthDate,
+            LocalDate beginDate, LocalDate endDate, Person person,
             LocalDate currentDate, LocalTime currentTime
                  )
     {
@@ -48,10 +48,6 @@ public class Client
         {
             throw new IllegalArgumentException("There is no finish date of abonement!");
         }
-        if(birthDate == null)
-        {
-            throw new IllegalArgumentException("There is no birth date");
-        }
         if(!beginDate.isBefore(endDate))
         {
             throw new IllegalArgumentException("Finish date is less than start date");
@@ -67,7 +63,7 @@ public class Client
         this.wishZone = zone;
         this.currentDate = currentDate;
         this.currentTime = currentTime;
-        this.abonement = new Abonement(number, beginDate, endDate, customer,birthDate, typeAbon);
+        this.abonement = new Abonement(number, beginDate, endDate, typeAbon, person);
     }
 
 }

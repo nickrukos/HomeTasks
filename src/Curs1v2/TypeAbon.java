@@ -1,16 +1,24 @@
 package Curs1v2;
 
+import java.time.LocalDate;
 import java.time.LocalTime;
 
 //Тип абонемента
 public enum TypeAbon
 {
-    DAILY,
-    FULL,
-    SHOT;
+    DAILY(new FitnessZone[2],LocalTime.of(8,0),LocalTime.of(16,0)),
+    FULL(new FitnessZone[3],LocalTime.of(8,0),LocalTime.of(22,0)),
+    SHOT(new FitnessZone[2],LocalTime.of(8,0),LocalTime.of(22,0));
     public final LocalTime beginTime;
     public final LocalTime endTime;
     public final FitnessZone [] zone;
+    TypeAbon(FitnessZone[] zone, LocalTime beginTime, LocalTime endTime)
+    {
+        this.zone = zone;
+        this.beginTime = beginTime;
+        this.endTime = endTime;
+    }
+/*
     TypeAbon()
     {
         if(this.name() == "DAILY")
@@ -41,4 +49,6 @@ public enum TypeAbon
             this.endTime = LocalTime.of(22,0);
         }
     }
+
+ */
 }
