@@ -18,7 +18,8 @@ public class Task02 {
 
     public static HashMap<String,Integer > wordsCount(List<String> list)
     {
-        HashMap<String,Integer>
+        HashMap<String,Integer> map = new HashMap<>();
+        return map;
     }
 
     public static void main(String[] args) {
