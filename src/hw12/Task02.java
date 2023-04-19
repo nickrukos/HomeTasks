@@ -1,6 +1,19 @@
 package hw12;
 
+import hw11.task03.Employee;
+
 import java.util.*;
+
+class EntryStringIntegerComparator implements Comparator<Map.Entry<String,Integer>>
+{
+    public int compare(Map.Entry<String,Integer> a, Map.Entry<String,Integer> b)
+    {
+        if(a.getValue().compareTo(b.getValue())<0) return -1;
+        else if(a.getValue().compareTo(b.getValue())>0) return 1;
+        return 0;
+    }
+
+}
 
 public class Task02 {    //к п. 2.1
     public static List <String> firstTask(HashMap<String, String> map, String city)
@@ -77,6 +90,25 @@ public class Task02 {    //к п. 2.1
         }
         return listStr;
     }
+    public static List<String> freqWordsV2(List<String> list)   //к пункту 4.3.3
+    {
+        HashMap<String,Integer> mapWords = new HashMap<>();
+        mapWords = wordsCount(list);
+        ArrayList<Map.Entry<String,Integer>> pairs = new ArrayList<>();
+        for (Map.Entry<String, Integer> entry : mapWords.entrySet())
+        {
+            pairs.add(entry);
+        }
+        Collections.sort(pairs,new EntryStringIntegerComparator());
+        Collections.reverse(pairs);
+        List<String> listStr = new ArrayList<>();
+        for (int i = 0; i < 11; i++)
+        {
+            listStr.add(pairs.get(i).getKey());
+        }
+        return listStr;
+    }
+
 
     public static void main(String[] args)
     {
@@ -103,8 +135,8 @@ public class Task02 {    //к п. 2.1
         //  Написать статический метод, который будет возвращать количество одинаковых слов в списке
         //  в map вида Map<String, Integer>, где String - слово и Integer - количество повторений
 
-        List<String> words01 = new ArrayList<>();
         HashMap<String,Integer> mapInteger = new HashMap<>();
+        List<String> words01 = new ArrayList<>();
         words01.add("may");
         words01.add("august");
         words01.add("june");
@@ -137,8 +169,13 @@ public class Task02 {    //к п. 2.1
                 "uncover many web sites still uncover in their infancy Various versions uncover have evolved over the years uncover sometimes by accident" +
                 " sometimes on purpose injected humour and the like";
         String[] words02 = text.split(" ");
-
-
+        List<String> freqWords2 = new ArrayList<String>(Arrays.asList(words02));
+        List<String> resultList = new ArrayList<String>();
+        resultList  = freqWordsV2(freqWords2);
+        for (int i = 0; i < resultList.size(); i++)
+        {
+            System.out.println(resultList.get(i));
+        }
 
     }
 }
