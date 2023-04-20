@@ -1,6 +1,7 @@
 package hw12;
 
 import hw11.task03.Employee;
+import hw12.bounded.Repaintable;
 
 import java.util.*;
 
