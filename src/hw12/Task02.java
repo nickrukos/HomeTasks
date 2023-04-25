@@ -93,6 +93,12 @@ public class Task02 {    //к п. 2.1
     }
     public static List<String> freqWordsV2(List<String> list)   //к пункту 4.3.3
     {
+        Comparator<Map.Entry<String, Integer>> valueComparator = new Comparator<Map.Entry<String, Integer>>() {
+            @Override
+            public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+                return o2.getValue() - o1.getValue();
+            }
+        };
         HashMap<String,Integer> mapWords = new HashMap<>();
         mapWords = wordsCount(list);
         ArrayList<Map.Entry<String,Integer>> pairs = new ArrayList<>();
@@ -101,9 +107,11 @@ public class Task02 {    //к п. 2.1
             pairs.add(entry);
         }
         Collections.sort(pairs,new EntryStringIntegerComparator());
+        pairs.sort(valueComparator);   //можно и так сортировать
         Collections.reverse(pairs);
         List<String> listStr = new ArrayList<>();
-        for (int i = 0; i < 11; i++)
+        int count = Math.min(10,listStr.size());
+        for (int i = 0; i < count; i++)
         {
             listStr.add(pairs.get(i).getKey());
         }
