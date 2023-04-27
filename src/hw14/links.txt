@@ -1,0 +1,3 @@
+https://annimon.com/article/2778
+https://tproger.ru/articles/chto-nuzhno-znat-o-java-stream-api/?ysclid=lgzhu0yh39109554981
+https://www.baeldung.com/java-8-streams
