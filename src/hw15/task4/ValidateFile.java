@@ -2,18 +2,18 @@ package hw15.task4;
 
 import java.util.function.*;
 
-@FunctionalInterface
 public interface ValidateFile
 {
-    public boolean validate(Predicate<File> file);
-    default ValidateFile andRule(ValidateFile valid)
+    boolean rule();
+    default ValidateFile andRule(ValidateFile vf)
     {
-        return file ->
+       boolean rule1;
+        ValidateFile validateFile = () ->
         {
-            if(validate(file) && valid.validate(file))
-            {
-
-            }
+            rule1 = rule();
+            vf.rule();
         };
+        return validateFile;
     }
+
 }
