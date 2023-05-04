@@ -1,17 +1,19 @@
 package hw15.task4;
 
 import java.util.ArrayList;
+import java.util.function.Predicate;
 
 public class FileStorage
 {
     private ArrayList<String> files;
-    private ValidateFile validateFile;
-    public FileStorage(ValidateFile validateFile)
+    private Predicate<CheckFile> checkFile;
+    public FileStorage(Predicate<CheckFile> checkFile)
     {
-       this.validateFile = validateFile;
+       this.checkFile = checkFile;
     }
-    public boolean addFile(String fileName)
-    {
 
+    public boolean addFile(String fileName, CheckFile.)
+    {
+        if(checkFile)
     }
 }
