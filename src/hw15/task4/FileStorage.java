@@ -6,14 +6,19 @@ import java.util.function.Predicate;
 public class FileStorage
 {
     private ArrayList<String> files;
-    private Predicate<CheckFile> checkFile;
+    private Predicate<CheckFile> checkFilePredicate;
     public FileStorage(Predicate<CheckFile> checkFile)
     {
-       this.checkFile = checkFile;
+       this.checkFilePredicate = checkFile;
     }
 
-    public boolean addFile(String fileName, CheckFile.)
+    public boolean addFile(String fileName)
     {
-        if(checkFile)
+        CheckFile checkFile = new CheckFile(fileName);
+        if(checkFilePredicate.test(checkFile)) {
+            files.add(fileName);
+            return true;
+        }
+        return false;
     }
 }

@@ -1,5 +1,6 @@
 package hw15.task4;
 
+import java.io.File;
 import java.util.function.Predicate;
 
 public class Task04 {
@@ -19,12 +20,28 @@ public class Task04 {
 
         // Можно написать свой функциональный интерфейс, чтобы закрепить синтаксис,
         // или использовать подходящий из пакета java.util.function и разобраться с его методами
-        Rule1 rule1 = new Rule1();
-        Rule2 rule2 = new Rule2();
-        Predicate<CheckFile> pr1 = checkFile -> rule1.rule(checkFile);
-        Predicate<CheckFile> pr2 = checkFile -> rule2.rule(checkFile);
-        Predicate<CheckFile> pr = pr1.and(pr2);
-
-
+         Predicate<CheckFile> pr1 = checkFile ->
+        {
+            File f = new File(checkFile.fileName);
+            if(f.exists()) return true;
+            return false;
+        };
+        Predicate<CheckFile> pr2 = checkFile ->
+        {
+            File f = new File(checkFile.fileName);
+            if(checkFile.fileName.substring(checkFile.fileName.lastIndexOf('.')+1).equals("xml")) return true;
+            return false;
+        };
+        Predicate<CheckFile> pr3 = checkFile ->
+        {
+            File f = new File(checkFile.fileName);
+            if(checkFile.fileName.substring(checkFile.fileName.lastIndexOf('.')+1).equals("json")) return true;
+            return false;
+        };
+        Predicate<CheckFile> pr = pr1.and(pr2.or(pr3));
+        FileStorage fileStorage = new FileStorage(pr);
+        String fileName = "D:\nick.xml";
+        if (fileStorage.addFile(fileName)) System.out.println("File is added");
+        else System.out.println("File doesn't exists");
     }
 }
