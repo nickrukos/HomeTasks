@@ -21,12 +21,14 @@ abstract public class Check
         else this.condition = false;
         return this;
     }
-    public void doCheck()
+    public void doCheck(String fileName)
     {
+        this.fileName = fileName;
         result = checkRule();
         if(nextCheck != null)
         {
             result = condition;
+            nextCheck.doCheck(fileName);
             return;
         }
     }
@@ -42,4 +44,7 @@ abstract public class Check
     public void setFileName(String fileName) {
         this.fileName = fileName;
     }
+
+
 }
+
