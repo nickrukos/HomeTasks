@@ -20,6 +20,7 @@ public class MenuItems
     }
     public void exitGame()
     {
-        System.out.println("Exit from Game");
+        //System.out.println("Exit from Game");
+        System.exit(0);
     }
 }

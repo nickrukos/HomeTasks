@@ -1,11 +1,12 @@
 package Curs2;
 
-public class ExitGameOperation implements IMenuOperation
+public class ExitGameOperation extends MenuOperation
 {
     private MenuItems menuItem;
-    public final String menuPoint = "Exit Game";
-    public ExitGameOperation(MenuItems menuItem)
+
+    public ExitGameOperation(String item,MenuItems menuItem)
     {
+        super(item);
         this.menuItem = menuItem;
     }
     public void execute()

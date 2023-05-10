@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Menu
 {
-    private List<IMenuOperation> items;
+    private List<MenuOperation> items;
     public Menu(int itemsCount)
     {
         items = new ArrayList<>();
@@ -14,12 +14,26 @@ public class Menu
             items.add(null);
         }
     }
-    public void setItem(int button, IMenuOperation item)
+    public void setItem(int button, MenuOperation item)
     {
         items.set(button,item);
     }
     public void selectItem(int button)
     {
         items.get(button).execute();
+    }
+    public MenuOperation getItem(int button)
+    {
+        return items.get(button);
+    }
+    public int getMenuSize()
+    {
+        return items.size();
+    }
+    public void Draw()
+    {
+        for (int i = 0; i < items.size(); i++) {
+            System.out.println((i+1) + " " + items.get(i).item_name);
+        }
     }
 }

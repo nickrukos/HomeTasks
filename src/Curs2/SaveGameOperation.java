@@ -1,11 +1,12 @@
 package Curs2;
 
-public class SaveGameOperation implements IMenuOperation
+public class SaveGameOperation extends MenuOperation
 {
     private MenuItems menuItem;
-    public final String menuPoint = "Save Game";
 
-    public SaveGameOperation(MenuItems menuItem) {
+    public SaveGameOperation(String item,  MenuItems menuItem)
+    {
+        super(item);
         this.menuItem = menuItem;
     }
 

@@ -1,11 +1,13 @@
 package Curs2;
 
-public class StartGameOperation implements IMenuOperation
+public class StartGameOperation extends MenuOperation
 {
     private MenuItems menuItem;
     public final String menuPoint = "Start Game";
 
-    public StartGameOperation(MenuItems menuItem) {
+    public StartGameOperation(String item,  MenuItems menuItem)
+    {
+        super(item);
         this.menuItem = menuItem;
     }
 
