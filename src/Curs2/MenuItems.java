@@ -5,6 +5,7 @@ public class MenuItems
     public void startGame()
     {
         System.out.println("Start Game");
+        Menu.gameMenu();
     }
     public void loadGame()
     {
@@ -17,10 +18,11 @@ public class MenuItems
     public void returnToMainMenu()
     {
         System.out.println("Return to Main Menu");
+        Menu.mainMenu();
     }
     public void exitGame()
     {
-        //System.out.println("Exit from Game");
+        System.out.println("Game Over!");
         System.exit(0);
     }
 }

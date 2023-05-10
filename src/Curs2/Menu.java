@@ -2,6 +2,7 @@ package Curs2;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Menu
 {
@@ -34,6 +35,37 @@ public class Menu
     {
         for (int i = 0; i < items.size(); i++) {
             System.out.println((i+1) + " " + items.get(i).item_name);
+        }
+    }
+    public static void mainMenu()
+    {
+        MenuItems menuItems = new MenuItems();
+        Menu startMenu = new Menu(3);
+        startMenu.setItem(0,new StartGameOperation("StartGame",  menuItems));
+        startMenu.setItem(1, new LoadGameOperation( "LoadGame",  menuItems));
+        startMenu.setItem(2,new ExitGameOperation("ExitGame",  menuItems));
+        startMenu.Draw();
+        while(true)
+        {
+            Scanner userValue = new Scanner(System.in);
+            System.out.println("Press from 1 to 3 for your choice");
+            int userAnswer = userValue.nextInt();
+            startMenu.getItem(userAnswer-1).execute();
+        }
+    }
+    public static void gameMenu()
+    {
+        MenuItems menuItems = new MenuItems();
+
+        Menu gameMenu = new Menu(2);
+        gameMenu.setItem(0, new SaveGameOperation("SaveGame",  menuItems));
+        gameMenu.setItem(1, new ReturnToMainMenu("Return to Main menu",  menuItems));
+        gameMenu.Draw();
+        while(true)
+        {
+            Scanner userValue = new Scanner(System.in);
+            int userAnswer = userValue.nextInt();
+            gameMenu.getItem(userAnswer-1).execute();
         }
     }
 }
