@@ -1,5 +1,8 @@
 package Curs2;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 public class MenuItems
 {
     public void startGame()
@@ -24,5 +27,20 @@ public class MenuItems
     {
         System.out.println("Game Over!");
         System.exit(0);
+    }
+    public void loadLeftSection()
+    {
+        if(Game.getArrKey().get(0).equals("30") || Game.getArrKey().get(0).equals("-1")
+            || Game.getArrKey().get(0).equals("40") || Game.getArrKey().get(0).equals("-2"))
+        {
+
+            returnToMainMenu();
+            return;
+        }
+        Game.DrawSection(Integer.parseInt(Game.getArrKey().get(0)));
+    }
+    public void LoadRightSection()
+    {
+        Game.DrawSection(Integer.parseInt(Game.getArrKey().get(1)));
     }
 }

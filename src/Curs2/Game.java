@@ -5,23 +5,25 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
+import java.util.Set;
 
 public class Game
 {
-    private ArrayList<Section> sections;
-    private HashMap<String,String> currentSection;
-
+    private static ArrayList<Section> sections = new ArrayList<>();
+    private static ArrayList<String> arrKey = new ArrayList<>();
+    private static ArrayList<String> arrValue = new ArrayList<>();
+    private static HashMap<String,String> currentSection = new HashMap<>();
+/*
     public Game()
     {
         sections = new ArrayList<>();
         currentSection = new HashMap<>();
     }
-
-    public void setSections(String fileName)
+*/
+    public static void setSections(String fileName)
     {
         //String fileName = "src/curs2/file.txt";
         String buffer;
-        ArrayList<Section> sections = new ArrayList<>();
         Scanner scanner = null;
         try {
             scanner = new Scanner(new File(fileName));
@@ -45,19 +47,50 @@ public class Game
         }
         scanner.close();
     }
-    public void DrawSection(int number)
+    public static void DrawSection(int number)
     {
         String prom = "tt";
+        arrKey.clear();
+        arrValue.clear();
         System.out.println(sections.get(number).getTitle());
         System.out.println(sections.get(number).getText());
         currentSection = sections.get(number).getNextSections();
+        Set<String> keys = currentSection.keySet();
         for(String value: currentSection.values())
         {
-            if(prom.equals("tt")) System.out.print("3: ");
-            else System.out.print("4: ");
+            arrValue.add(value);
+            for (String key :keys)
+                if(currentSection.get(key).equals(value)) arrKey.add(key);
+            if(arrKey.get(0).equals("30") || arrKey.get(0).equals("-1"))
+            {
+                System.out.println("You won!!!");
+                return;
+            }
+            if(arrKey.get(0).equals("40") || arrKey.get(0).equals("-2"))
+            {
+                System.out.println("You lost!!!");
+                return;
+            }
+
+            if(prom.equals("tt")) {
+                System.out.print("3: ");
+            }
+            else if(!value.equals("")) {
+                System.out.print("4: ");
+            }
             prom = value;
+
             System.out.println(value);
+
         }
         System.out.println("Press 3 or 4 to continue Game");
+    }
+
+    public static ArrayList<String> getArrKey() {
+        return arrKey;
+    }
+
+    public static ArrayList<String> getArrValue() {
+        return arrValue;
     }
 }
