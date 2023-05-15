@@ -30,7 +30,7 @@ public class Game
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-        scanner.useDelimiter("###");
+        scanner = scanner.useDelimiter("###");
         while (scanner.hasNext())
         {
             //System.out.println(scanner.next());

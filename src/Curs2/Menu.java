@@ -31,9 +31,9 @@ public class Menu
     {
         return items.size();
     }
-    public void Draw()
+    public void Draw(int size)
     {
-        for (int i = 0; i < items.size(); i++) {
+        for (int i = 0; i < size; i++) {
             System.out.println((i+1) + " " + items.get(i).item_name);
         }
     }
@@ -44,7 +44,7 @@ public class Menu
         startMenu.setItem(0,new StartGameOperation("StartGame",  menuItems));
         startMenu.setItem(1, new LoadGameOperation( "LoadGame",  menuItems));
         startMenu.setItem(2,new ExitGameOperation("ExitGame",  menuItems));
-        startMenu.Draw();
+        startMenu.Draw(3);
         while(true)
         {
             Scanner userValue = new Scanner(System.in);
@@ -56,16 +56,23 @@ public class Menu
     public static void gameMenu()
     {
         MenuItems menuItems = new MenuItems();
-
         Menu gameMenu = new Menu(2);
         gameMenu.setItem(0, new SaveGameOperation("SaveGame",  menuItems));
         gameMenu.setItem(1, new ReturnToMainMenu("Return to Main menu",  menuItems));
-        gameMenu.Draw();
+        gameMenu.setItem(2,new LoadLeftSectionOperation("",menuItems));
+        gameMenu.setItem(3,new LoadRightSectionOperation("",menuItems));
+        gameMenu.Draw(2);
         while(true)
         {
             Scanner userValue = new Scanner(System.in);
             int userAnswer = userValue.nextInt();
             gameMenu.getItem(userAnswer-1).execute();
         }
+    }
+    public static void sectionMenu()
+    {
+        MenuItems menuItems = new MenuItems();
+        Menu sectionMenu = new Menu(2);
+
     }
 }

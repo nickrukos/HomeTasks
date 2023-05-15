@@ -2,13 +2,14 @@ package Curs2;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Scanner;
 
 public class MenuItems
 {
     public void startGame()
     {
-        System.out.println("Start Game");
         Menu.gameMenu();
+
     }
     public void loadGame()
     {
@@ -39,7 +40,7 @@ public class MenuItems
         }
         Game.DrawSection(Integer.parseInt(Game.getArrKey().get(0)));
     }
-    public void LoadRightSection()
+    public void loadRightSection()
     {
         Game.DrawSection(Integer.parseInt(Game.getArrKey().get(1)));
     }
