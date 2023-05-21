@@ -11,6 +11,6 @@ public class ExitGameOperation extends MenuOperation
     }
     public void execute()
     {
-        menuItem.exitGame();
+         menuItem.exitGame();
     }
 }

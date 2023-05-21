@@ -48,7 +48,7 @@ public class Game
         String prom = "tt";
         arrKey.clear();
         arrValue.clear();
-        System.out.println(sections.get(number).getTitle());
+        System.out.print(sections.get(number).getTitle());
         System.out.println(sections.get(number).getText());
         numberSection = Integer.toString(number);
         currentSection = sections.get(number).getNextSections();

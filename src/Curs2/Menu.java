@@ -4,11 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import org.jnativehook.GlobalScreen;
-import org.jnativehook.NativeHookException;
-import org.jnativehook.keyboard.NativeKeyEvent;
-import org.jnativehook.keyboard.NativeKeyListener;
-
 public class Menu
 {
     private List<MenuOperation> items;
@@ -42,9 +37,7 @@ public class Menu
             System.out.println((i+1) + " " + items.get(i).item_name);
         }
     }
-    public static void mainMenu()
-    {
-        //GlobalScreen.
+    public static void mainMenu()  {
         MenuItems menuItems = new MenuItems();
         Menu startMenu = new Menu(3);
         startMenu.setItem(0,new StartGameOperation("StartGame",  menuItems));
@@ -56,6 +49,12 @@ public class Menu
             Scanner userValue = new Scanner(System.in);
             System.out.println("Press from 1 to 3 for your choice");
             int userAnswer = userValue.nextInt();
+            if(!(userAnswer == 1 || userAnswer == 2
+                    || userAnswer == 3))
+            {
+                System.out.println("You pressed a wrong key!");
+                continue;
+            }
             startMenu.getItem(userAnswer-1).execute();
         }
     }
@@ -73,7 +72,12 @@ public class Menu
         {
             Scanner userValue = new Scanner(System.in);
             int userAnswer = userValue.nextInt();
-
+            if(!(userAnswer == 1 || userAnswer == 2
+                 || userAnswer == 3 || userAnswer == 4))
+            {
+                System.out.println("You pressed a wrong key!");
+                continue;
+            }
             gameMenu.getItem(userAnswer-1).execute();
         }
     }
@@ -82,6 +86,4 @@ public class Menu
         MenuItems menuItems = new MenuItems();
         Menu sectionMenu = new Menu(2);
     }
-
-
 }

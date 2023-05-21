@@ -33,8 +33,7 @@ public class MenuItems
         fileOutputStream.close();
         Game.DrawSection(Integer.parseInt(str));
     }
-    public void returnToMainMenu()
-    {
+    public void returnToMainMenu()  {
         System.out.println("Return to Main Menu");
         Menu.mainMenu();
     }
@@ -43,8 +42,7 @@ public class MenuItems
         System.out.println("Game Over!");
         System.exit(0);
     }
-    public void loadFirstSection()
-    {
+    public void loadFirstSection() {
         if(Game.getArrKey().get(0).equals("30") || Game.getArrKey().get(0).equals("-1")
             || Game.getArrKey().get(0).equals("40") || Game.getArrKey().get(0).equals("-2"))
         {
