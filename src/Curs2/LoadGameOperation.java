@@ -1,5 +1,8 @@
 package Curs2;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
 public class LoadGameOperation extends MenuOperation
 {
     private MenuItems menuItem;
@@ -12,6 +15,12 @@ public class LoadGameOperation extends MenuOperation
 
     public void execute()
     {
-        menuItem.loadGame();
+        try {
+            menuItem.loadGame();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

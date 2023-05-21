@@ -4,6 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import org.jnativehook.GlobalScreen;
+import org.jnativehook.NativeHookException;
+import org.jnativehook.keyboard.NativeKeyEvent;
+import org.jnativehook.keyboard.NativeKeyListener;
+
 public class Menu
 {
     private List<MenuOperation> items;
@@ -39,6 +44,7 @@ public class Menu
     }
     public static void mainMenu()
     {
+        //GlobalScreen.
         MenuItems menuItems = new MenuItems();
         Menu startMenu = new Menu(3);
         startMenu.setItem(0,new StartGameOperation("StartGame",  menuItems));
@@ -53,19 +59,21 @@ public class Menu
             startMenu.getItem(userAnswer-1).execute();
         }
     }
-    public static void gameMenu()
+    public static void gameMenu(int index)
     {
         MenuItems menuItems = new MenuItems();
-        Menu gameMenu = new Menu(2);
+        Menu gameMenu = new Menu(4);
         gameMenu.setItem(0, new SaveGameOperation("SaveGame",  menuItems));
         gameMenu.setItem(1, new ReturnToMainMenu("Return to Main menu",  menuItems));
-        gameMenu.setItem(2,new LoadLeftSectionOperation("",menuItems));
-        gameMenu.setItem(3,new LoadRightSectionOperation("",menuItems));
+        gameMenu.setItem(2,new LoadFirstSectionOperation("",menuItems));
+        gameMenu.setItem(3,new LoadSecondSectionOperation("",menuItems));
         gameMenu.Draw(2);
+        Game.DrawSection(index);
         while(true)
         {
             Scanner userValue = new Scanner(System.in);
             int userAnswer = userValue.nextInt();
+
             gameMenu.getItem(userAnswer-1).execute();
         }
     }
@@ -73,6 +81,7 @@ public class Menu
     {
         MenuItems menuItems = new MenuItems();
         Menu sectionMenu = new Menu(2);
-
     }
+
+
 }

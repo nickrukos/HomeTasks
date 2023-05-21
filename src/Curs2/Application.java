@@ -12,6 +12,8 @@ public class Application
     public static void main(String[] args)
     {
        //Применение класса Game
+        Game.setSections("src/Curs2/file.txt");
+        Menu.mainMenu();
 
     }
 }

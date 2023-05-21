@@ -13,13 +13,8 @@ public class Game
     private static ArrayList<String> arrKey = new ArrayList<>();
     private static ArrayList<String> arrValue = new ArrayList<>();
     private static HashMap<String,String> currentSection = new HashMap<>();
-/*
-    public Game()
-    {
-        sections = new ArrayList<>();
-        currentSection = new HashMap<>();
-    }
-*/
+    private static String numberSection;
+
     public static void setSections(String fileName)
     {
         //String fileName = "src/curs2/file.txt";
@@ -37,6 +32,7 @@ public class Game
             Section section = new Section();
             buffer = scanner.next();
             buffer.replaceAll("\\p{Cntrl}", "");
+            buffer.replaceAll("\\r\\n", "");
             String[] words = buffer.split(";");
             section.setNumber(words[0]);
             section.setTitle(words[1]);
@@ -54,6 +50,7 @@ public class Game
         arrValue.clear();
         System.out.println(sections.get(number).getTitle());
         System.out.println(sections.get(number).getText());
+        numberSection = Integer.toString(number);
         currentSection = sections.get(number).getNextSections();
         Set<String> keys = currentSection.keySet();
         for(String value: currentSection.values())
@@ -61,29 +58,24 @@ public class Game
             arrValue.add(value);
             for (String key :keys)
                 if(currentSection.get(key).equals(value)) arrKey.add(key);
-            if(arrKey.get(0).equals("30") || arrKey.get(0).equals("-1"))
+            String str = arrKey.get(0);
+            str = str.replaceAll("\\r\\n", "");
+            if(str.equals("30") || str.equals("-1"))
             {
-                System.out.println("You won!!!");
+                System.out.println("Вы выиграли!!!");
                 return;
             }
-            if(arrKey.get(0).equals("40") || arrKey.get(0).equals("-2"))
+            if(str.equals("40") || str.equals("-2"))
             {
-                System.out.println("You lost!!!");
+                System.out.println("Вы проиграли!!!");
                 return;
             }
-
-            if(prom.equals("tt")) {
-                System.out.print("3: ");
-            }
-            else if(!value.equals("")) {
-                System.out.print("4: ");
-            }
-            prom = value;
-
+            if(prom.equals("tt"))  System.out.print("3: ");
+            else System.out.print("4: ");
+            value = value.replaceAll("\\r\\n", "");
             System.out.println(value);
-
+            prom = value;
         }
-        System.out.println("Press 3 or 4 to continue Game");
     }
 
     public static ArrayList<String> getArrKey() {
@@ -92,5 +84,9 @@ public class Game
 
     public static ArrayList<String> getArrValue() {
         return arrValue;
+    }
+
+    public static String getNumberSection() {
+        return numberSection;
     }
 }
