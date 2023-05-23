@@ -60,4 +60,17 @@ public class MenuItems
         str = str.substring(2);
         Game.DrawSection(Integer.parseInt(str)-1);
     }
+    public void loginGame() throws IOException
+    {
+        System.out.println("Please type your login:");
+        Scanner userValue = new Scanner(System.in);
+        String userLogin = userValue.nextLine();
+        System.out.println("Please type your password:");
+        String userPassword = userValue.nextLine();
+        String userCurrentSection = User.loadUser(userLogin,userPassword,"src/curs2/user.txt");
+        if(userCurrentSection == null)
+        {
+            System.out.println("Your login or password is incorrect!");
+        }
+    }
 }
