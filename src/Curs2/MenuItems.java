@@ -71,6 +71,26 @@ public class MenuItems
         if(userCurrentSection == null)
         {
             System.out.println("Your login or password is incorrect!");
+            return;
         }
+        User user = new User(userLogin,userPassword,Integer.parseInt(userCurrentSection));
+    }
+    public void registerUser() throws IOException
+    {
+        String userLogin;
+        String userPassword;
+        System.out.println("Please type your login or '1' to return to Menu:");
+        Scanner userValue = new Scanner(System.in);
+        userLogin = userValue.nextLine();
+        System.out.println("Please type your password:");
+        userPassword = userValue.nextLine();
+        String userCurrentSection = User.loadUser(userLogin, userPassword, "src/curs2/user.txt");
+        if (userCurrentSection != null)
+        {
+            System.out.println("This user has present in the game! Try once more!");
+            return;
+        }
+
+        User user = new User(userLogin,userPassword,1);
     }
 }

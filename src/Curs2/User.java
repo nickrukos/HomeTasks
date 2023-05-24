@@ -28,13 +28,21 @@ public class User
             String[] words = record.split(";");
             if(words[0].equals(login) && words[1].equals(password))  return words[2];
         }
+        file.close();
         return null;
     }
     public void saveUser(String fileName) throws IOException
     {
         RandomAccessFile file = new RandomAccessFile(fileName,"rw");
         String record = this.login + ";" + this.password + ";" + this.currentSection;
-        file.seek(file.length());
+        String fileRecord = null;
+        file.seek(0);
+        while((fileRecord = file.readLine()) != null)
+        {
+            file.seek((long)fileRecord.length());
+            String[] words = fileRecord.split(";");
+            if(words[0].equals(login) && words[1].equals(password)) break;
+        }
         file.writeChars(record);
         file.close();
     }
