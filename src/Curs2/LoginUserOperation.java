@@ -1,42 +1,34 @@
 package Curs2;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 
-public class SaveGameOperation extends MenuOperation
+public class LoginUserOperation  extends MenuOperation
 {
     private String login;
     private String password;
     private String currentSection;
     private MenuItems menuItem;
-
-    public SaveGameOperation(String item,  MenuItems menuItem)
+    public final String menuPoint = "Login User";
+    public LoginUserOperation(String item,  MenuItems menuItem)
     {
         super(item);
         this.menuItem = menuItem;
     }
-
     public void execute()
     {
+        String userCurrent = null;
         try {
-            menuItem.saveGame();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            userCurrent = menuItem.loginGame();
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public void setCurrentSection(String currentSection) {
-        this.currentSection = currentSection;
+        if(userCurrent != null)
+        {
+            String[] words = userCurrent.split(";");
+            login = words[0];
+            password = words[1];
+            currentSection = words[2];
+        }
     }
 
     public String getLogin() {

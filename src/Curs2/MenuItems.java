@@ -44,7 +44,7 @@ public class MenuItems
     }
     public void loadFirstSection() {
         if(Game.getArrKey().get(0).equals("30") || Game.getArrKey().get(0).equals("-1")
-            || Game.getArrKey().get(0).equals("40") || Game.getArrKey().get(0).equals("-2"))
+                || Game.getArrKey().get(0).equals("40") || Game.getArrKey().get(0).equals("-2"))
         {
 
             returnToMainMenu();
@@ -60,22 +60,17 @@ public class MenuItems
         str = str.substring(2);
         Game.DrawSection(Integer.parseInt(str)-1);
     }
-    public void loginGame() throws IOException
+    public String loginGame() throws IOException
     {
         System.out.println("Please type your login:");
         Scanner userValue = new Scanner(System.in);
         String userLogin = userValue.nextLine();
         System.out.println("Please type your password:");
         String userPassword = userValue.nextLine();
-        String userCurrentSection = User.loadUser(userLogin,userPassword,"src/curs2/user.txt");
-        if(userCurrentSection == null)
-        {
-            System.out.println("Your login or password is incorrect!");
-            return;
-        }
-        User user = new User(userLogin,userPassword,Integer.parseInt(userCurrentSection));
+        String userCurrent = User.loadUser(userLogin,userPassword,"src/curs2/user.txt");
+        return userCurrent;
     }
-    public void registerUser() throws IOException
+    public String registerUser() throws IOException
     {
         String userLogin;
         String userPassword;
@@ -84,13 +79,17 @@ public class MenuItems
         userLogin = userValue.nextLine();
         System.out.println("Please type your password:");
         userPassword = userValue.nextLine();
-        String userCurrentSection = User.loadUser(userLogin, userPassword, "src/curs2/user.txt");
-        if (userCurrentSection != null)
+        String userCurrent = User.loadUser(userLogin, userPassword, "src/curs2/user.txt");
+        if (userCurrent != null)
         {
-            System.out.println("This user has present in the game! Try once more!");
-            return;
+            System.out.println("This user has present in the game! Try login or change login and password!");
+            return null;
         }
-
-        User user = new User(userLogin,userPassword,1);
+        return userLogin + ";" + userPassword + ";" + "0";
+    }
+    public void returnToUserMenu()
+    {
+        System.out.println("Return to User Menu");
+        //Menu.userMenu();
     }
 }

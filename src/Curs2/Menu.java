@@ -7,6 +7,7 @@ import java.util.Scanner;
 public class Menu
 {
     private List<MenuOperation> items;
+
     public Menu(int itemsCount)
     {
         items = new ArrayList<>();
@@ -62,18 +63,21 @@ public class Menu
     {
         MenuItems menuItems = new MenuItems();
         Menu gameMenu = new Menu(4);
-        gameMenu.setItem(0, new SaveGameOperation("SaveGame",  menuItems));
-        gameMenu.setItem(1, new ReturnToMainMenu("Return to Main menu",  menuItems));
+        SaveGameOperation saveGame = new SaveGameOperation("SaveGame",  menuItems);
+        ReturnToMainMenu returnToMainMenu = new ReturnToMainMenu("Return to Main menu",  menuItems);
+        gameMenu.setItem(0, saveGame);
+        gameMenu.setItem(1, returnToMainMenu);
         gameMenu.setItem(2,new LoadFirstSectionOperation("",menuItems));
         gameMenu.setItem(3,new LoadSecondSectionOperation("",menuItems));
         gameMenu.Draw(2);
         Game.DrawSection(index);
+
         while(true)
         {
             Scanner userValue = new Scanner(System.in);
             int userAnswer = userValue.nextInt();
             if(!(userAnswer == 1 || userAnswer == 2
-                 || userAnswer == 3 || userAnswer == 4))
+                    || userAnswer == 3 || userAnswer == 4))
             {
                 System.out.println("You pressed a wrong key!");
                 continue;

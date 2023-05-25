@@ -13,6 +13,8 @@ public class Game
     private static ArrayList<String> arrKey = new ArrayList<>();
     private static ArrayList<String> arrValue = new ArrayList<>();
     private static HashMap<String,String> currentSection = new HashMap<>();
+    private static String currentLogin;
+    private static String currentPassword;
     private static String numberSection;
 
     public static void setSections(String fileName)
@@ -88,5 +90,17 @@ public class Game
 
     public static String getNumberSection() {
         return numberSection;
+    }
+
+    public static void setCurrentLogin(String currentLogin) {
+        Game.currentLogin = currentLogin;
+    }
+
+    public static void setCurrentPassword(String currentPassword) {
+        Game.currentPassword = currentPassword;
+    }
+
+    public static void setNumberSection(String numberSection) {
+        Game.numberSection = numberSection;
     }
 }
