@@ -43,7 +43,7 @@ public class Menu
         Menu startMenu = new Menu(3);
         startMenu.setItem(0,new StartGameOperation("StartGame",  menuItems));
         startMenu.setItem(1, new LoadGameOperation( "LoadGame",  menuItems));
-        startMenu.setItem(2,new ExitGameOperation("ExitGame",  menuItems));
+        startMenu.setItem(2,new ReturnToUserMenuOperation("Return to User Menu",  menuItems));
         startMenu.Draw(3);
         while(true)
         {
@@ -85,6 +85,50 @@ public class Menu
             gameMenu.getItem(userAnswer-1).execute();
         }
     }
+
+    public static void userMenu()
+    {
+        MenuItems menuItems = new MenuItems();
+        Menu userMenu = new Menu(3);
+        LoginUserOperation loginUser = new LoginUserOperation("Login User",menuItems);
+        RegisterUserOperation registerUser = new RegisterUserOperation("Register User", menuItems);
+        userMenu.setItem(0,loginUser);
+        userMenu.setItem(1,registerUser);
+        userMenu.setItem(2,new ExitGameOperation("Exit Game",menuItems));
+        userMenu.Draw(3);
+        while (true)
+        {
+            Scanner userValue = new Scanner(System.in);
+            System.out.println("Press from 1 to 3 for your choice");
+            int userAnswer = userValue.nextInt();
+            if(!(userAnswer == 1 || userAnswer == 2
+                    || userAnswer == 3))
+            {
+                System.out.println("You pressed a wrong key!");
+                continue;
+            }
+            userMenu.getItem(userAnswer-1).execute();
+            if(userAnswer == 1)
+            {
+                //login user
+                if(loginUser.getLogin() != null)
+                {
+                    Menu.mainMenu();
+                }
+                System.out.println("Your login or password is incorrect, or you wished to return to Menu!");
+            }
+            if(userAnswer == 2)
+            {
+                //register user
+                if(registerUser.getLogin() != null)
+                {
+                    Menu.mainMenu();
+                }
+                System.out.println("This user has present in the game! Try login or change login and password!");
+            }
+        }
+    }
+
     public static void sectionMenu()
     {
         MenuItems menuItems = new MenuItems();

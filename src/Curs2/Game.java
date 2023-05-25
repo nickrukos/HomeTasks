@@ -2,6 +2,8 @@ package Curs2;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.RandomAccessFile;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
@@ -78,6 +80,40 @@ public class Game
             System.out.println(value);
             prom = value;
         }
+    }
+
+    public static String loadUser(String login, String password, String fileName) throws IOException
+    {
+        RandomAccessFile file = new RandomAccessFile(fileName,"rw");
+        file.seek(0);
+        String record = null;
+        while((record = file.readLine()) != null)
+        {
+            String[] words = record.split(";");
+            if(words[0].equals(login) && words[1].equals(password))
+            {
+                file.close();
+                return record;
+            }
+        }
+        file.close();
+        return null;
+    }
+
+    public static void saveUser(String fileName) throws IOException
+    {
+        RandomAccessFile file = new RandomAccessFile(fileName,"rw");
+        String record = currentLogin + ";" + currentPassword + ";" + numberSection;
+        String fileRecord = null;
+        file.seek(0);
+        while((fileRecord = file.readLine()) != null)
+        {
+            String[] words = fileRecord.split(";");
+            if(words[0].equals(currentLogin) && words[1].equals(currentPassword)) break;
+            file.seek((long)fileRecord.length());
+        }
+        file.writeUTF(record);
+        file.close();
     }
 
     public static ArrayList<String> getArrKey() {

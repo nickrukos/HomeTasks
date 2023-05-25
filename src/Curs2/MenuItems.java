@@ -27,11 +27,8 @@ public class MenuItems
         Menu.gameMenu(Integer.parseInt(str));
     }
     public void saveGame() throws IOException {
-        FileOutputStream fileOutputStream = new FileOutputStream("src/curs2/save.txt");
-        String str = Game.getNumberSection();
-        fileOutputStream.write(str.getBytes());
-        fileOutputStream.close();
-        Game.DrawSection(Integer.parseInt(str));
+        Game.saveUser("src/curs2/save.txt");
+        Game.DrawSection(Integer.parseInt(Game.getNumberSection()));
     }
     public void returnToMainMenu()  {
         System.out.println("Return to Main Menu");
@@ -46,7 +43,6 @@ public class MenuItems
         if(Game.getArrKey().get(0).equals("30") || Game.getArrKey().get(0).equals("-1")
                 || Game.getArrKey().get(0).equals("40") || Game.getArrKey().get(0).equals("-2"))
         {
-
             returnToMainMenu();
             return;
         }
@@ -62,12 +58,21 @@ public class MenuItems
     }
     public String loginGame() throws IOException
     {
-        System.out.println("Please type your login:");
+        System.out.println("Please type your login or '1' to return to Menu:");
         Scanner userValue = new Scanner(System.in);
         String userLogin = userValue.nextLine();
+        if(userLogin.equals("1"))
+        {
+            return null;
+        }
         System.out.println("Please type your password:");
         String userPassword = userValue.nextLine();
-        String userCurrent = User.loadUser(userLogin,userPassword,"src/curs2/user.txt");
+        String userCurrent = Game.loadUser(userLogin,userPassword,"src/curs2/save.txt");
+        if(userCurrent == null) return null;
+        String words[] = userCurrent.split(";");
+        Game.setCurrentLogin(userLogin);
+        Game.setCurrentPassword(userPassword);
+        Game.setNumberSection(words[2]);
         return userCurrent;
     }
     public String registerUser() throws IOException
@@ -77,15 +82,22 @@ public class MenuItems
         System.out.println("Please type your login or '1' to return to Menu:");
         Scanner userValue = new Scanner(System.in);
         userLogin = userValue.nextLine();
+        if(userLogin.equals("1"))
+        {
+            return null;
+        }
         System.out.println("Please type your password:");
         userPassword = userValue.nextLine();
-        String userCurrent = User.loadUser(userLogin, userPassword, "src/curs2/user.txt");
+        String userCurrent = Game.loadUser(userLogin, userPassword, "src/curs2/user.txt");
         if (userCurrent != null)
         {
             System.out.println("This user has present in the game! Try login or change login and password!");
             return null;
         }
-        return userLogin + ";" + userPassword + ";" + "0";
+        Game.setCurrentLogin(userLogin);
+        Game.setCurrentPassword(userPassword);
+        Game.setNumberSection("1");
+        return userLogin + ";" + userPassword + ";" + "1";
     }
     public void returnToUserMenu()
     {
