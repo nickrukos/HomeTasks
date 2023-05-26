@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.RandomAccessFile;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
@@ -87,7 +88,8 @@ public class Game
         RandomAccessFile file = new RandomAccessFile(fileName,"rw");
         file.seek(0);
         String record = null;
-        while((record = file.readLine()) != null)
+        StringBuffer buffer = new StringBuffer();
+        while((record = file.readUTF()) != null)
         {
             String[] words = record.split(";");
             if(words[0].equals(login) && words[1].equals(password))
@@ -105,13 +107,15 @@ public class Game
         RandomAccessFile file = new RandomAccessFile(fileName,"rw");
         String record = currentLogin + ";" + currentPassword + ";" + numberSection;
         String fileRecord = null;
+        long offset=0;
         file.seek(0);
-        while((fileRecord = file.readLine()) != null)
+        while((fileRecord = file.readUTF()) != null)
         {
             String[] words = fileRecord.split(";");
             if(words[0].equals(currentLogin) && words[1].equals(currentPassword)) break;
-            file.seek((long)fileRecord.length());
+            offset += fileRecord.getBytes().length;
         }
+        file.seek(offset);
         file.writeUTF(record);
         file.close();
     }
