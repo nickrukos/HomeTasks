@@ -111,20 +111,20 @@ public class Menu
             if(userAnswer == 1)
             {
                 //login user
-                if(loginUser.getLogin() != null)
+                if(Game.getCurrentLogin() != null)
                 {
                     Menu.mainMenu();
                 }
-                System.out.println("Your login or password is incorrect, or you wished to return to Menu!");
+                System.out.println("Your login or password is incorrect, or you haven't saved Game, or you typed '1'!");
             }
             if(userAnswer == 2)
             {
                 //register user
-                if(registerUser.getLogin() != null)
+                if(Game.getCurrentLogin() != null)
                 {
                     Menu.mainMenu();
                 }
-                System.out.println("This user has present in the game! Try login or change login and password!");
+                System.out.println("This user has present in the game! Try login or change login and password! \n Or you typed '1'");
             }
         }
     }

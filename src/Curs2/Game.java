@@ -86,11 +86,12 @@ public class Game
     public static String loadUser(String login, String password, String fileName) throws IOException
     {
         RandomAccessFile file = new RandomAccessFile(fileName,"rw");
+        if(file.length() == 0) return null;
         file.seek(0);
         String record = null;
-        StringBuffer buffer = new StringBuffer();
-        while((record = file.readUTF()) != null)
+        while(file.getFilePointer() < file.length())
         {
+            record = file.readUTF();
             String[] words = record.split(";");
             if(words[0].equals(login) && words[1].equals(password))
             {
@@ -108,13 +109,17 @@ public class Game
         String record = currentLogin + ";" + currentPassword + ";" + numberSection;
         String fileRecord = null;
         long offset=0;
-        file.seek(0);
-        while((fileRecord = file.readUTF()) != null)
+        if(file.length() !=0)
         {
-            String[] words = fileRecord.split(";");
-            if(words[0].equals(currentLogin) && words[1].equals(currentPassword)) break;
-            offset += fileRecord.getBytes().length;
+            file.seek(0);
+            while (file.getFilePointer() < file.length()) {
+                fileRecord = file.readUTF();
+                String[] words = fileRecord.split(";");
+                if (words[0].equals(currentLogin) && words[1].equals(currentPassword)) break;
+                offset += (fileRecord.getBytes().length+2);
+            }
         }
+        file.seek(0);
         file.seek(offset);
         file.writeUTF(record);
         file.close();
@@ -130,6 +135,14 @@ public class Game
 
     public static String getNumberSection() {
         return numberSection;
+    }
+
+    public static String getCurrentLogin() {
+        return currentLogin;
+    }
+
+    public static String getCurrentPassword() {
+        return currentPassword;
     }
 
     public static void setCurrentLogin(String currentLogin) {

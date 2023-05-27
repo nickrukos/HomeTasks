@@ -14,17 +14,17 @@ public class MenuItems
     {
         Menu.gameMenu(0);
     }
-    public void loadGame() throws IOException {
-        BufferedReader reader = Files.newBufferedReader(Paths.get("src/curs2/save.txt"), StandardCharsets.UTF_8);
-        String str = reader.readLine();
-        if(str == null || str.trim().length() == 0)
+    public void loadGame() throws IOException
+    {
+        String record = Game.loadUser(Game.getCurrentLogin(),Game.getCurrentPassword(),"src/curs2/save.txt");
+        if(record == null)
         {
             System.out.println("There's no saved game yet");
-            reader.close();
             return;
         }
-        reader.close();
-        Menu.gameMenu(Integer.parseInt(str));
+        String[] words = record.split(";");
+        Game.setNumberSection(words[2]);
+        Menu.gameMenu(Integer.parseInt(words[2]));
     }
     public void saveGame() throws IOException {
         Game.saveUser("src/curs2/save.txt");
@@ -102,6 +102,6 @@ public class MenuItems
     public void returnToUserMenu()
     {
         System.out.println("Return to User Menu");
-        //Menu.userMenu();
+        Menu.userMenu();
     }
 }

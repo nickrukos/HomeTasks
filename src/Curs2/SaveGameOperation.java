@@ -5,9 +5,6 @@ import java.io.IOException;
 
 public class SaveGameOperation extends MenuOperation
 {
-    private String login;
-    private String password;
-    private String currentSection;
     private MenuItems menuItem;
 
     public SaveGameOperation(String item,  MenuItems menuItem)
@@ -27,27 +24,5 @@ public class SaveGameOperation extends MenuOperation
         }
     }
 
-    public void setLogin(String login) {
-        this.login = login;
-    }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public void setCurrentSection(String currentSection) {
-        this.currentSection = currentSection;
-    }
-
-    public String getLogin() {
-        return login;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public String getCurrentSection() {
-        return currentSection;
-    }
 }
