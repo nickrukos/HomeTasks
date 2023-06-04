@@ -16,6 +16,8 @@ import java.util.Scanner;
 
 
 public class ClientApp {
+    private final int N = 256; //число символов в описании
+    private final double Mb = 0.5;  //размер файла в мегабайтах
     private InetSocketAddress remote;
 
     // При создании клиента в конструктор передается экземпляр InetSocketAddress,
@@ -26,21 +28,55 @@ public class ClientApp {
 
     public void run(){
         // Thread.sleep(млс);
-
+        FileToSend fileToSend = null;
         Scanner scanner = new Scanner(System.in);
 
         while (true) {
             // 2.1. запрашивает текст сообщения (запрос) у пользователя
             System.out.println("Введите текст или /exit для выхода");
+            System.out.println("Для загрузки файла наберите '1'");
+            System.out.println("Для получения списка файлов с сервера наберите '2'");
             String text = scanner.nextLine();
             // И так до тех пор, пока пользователь не введет '/exit'
             if ("/exit".equals(text)) return;
+            if("1".equals(text))
+            {
+                System.out.println("Введите путь к файлу");
+                String fileName = scanner.nextLine();
+                System.out.println("Введите описание файла");
+                String description = scanner.nextLine();
+                try {
+                    fileToSend = new FileToSend(fileName,description);
 
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                if(fileToSend == null)
+                {
+                    System.out.println("Ваш файл несуществует");
+                    continue;
+                }
+                if(fileToSend.getFileSize()/1048576 > Mb)
+                {
+                    System.out.println("Размер файла больше " + String.valueOf(Mb) + " Мб.");
+                    continue;
+                }
+                if(fileToSend.getFileDescription().length() > N)
+                {
+                    System.out.println(" Описание файла больше " + String.valueOf(N) + " символов");
+                    continue;
+                }
+                text = "Загрузка файла на сервер";
+            }
+            if("2".equals(text))
+            {
+                text = "Требуется список файлов";
+            }
             // 2.2. устанавливает соединение с сервером
             try (Socket socket = new Socket(remote.getHostString(), remote.getPort());
                  ReadWrite readWrite = new ReadWrite(socket)){
                 // 2.3. создает экземпляр сообщения
-                Message message = new Message(text);
+                Message message = new Message(text, fileToSend);
                 // 2.4. отправляет сообщение на сервер
                 readWrite.writeMessage(message);
                 // 2.5. получает ответ

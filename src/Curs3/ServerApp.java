@@ -3,21 +3,19 @@ package Curs3;
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 
 public class ServerApp {
     private int port;
+    //private boo
     private Map<String, Task> tasksMap;
+    private static List<FileToSend> listFiles;
 
-    // При создании сервера в конструктор передается номер порта (int),
-    // по которому клиенты смогут подключаться к серверу.
     public ServerApp(int port) {
         this.port = port;
         tasksMap = new HashMap<>();
+        listFiles = new ArrayList<>();
     }
 
     public void run(){
@@ -42,10 +40,21 @@ public class ServerApp {
 
     private void sendResponse(ReadWrite readWrite, Message requestMessage) { // выполнение запрошенной задачи
         Message responseMessage;
-        if (requestMessage == null || !tasksMap.containsKey(requestMessage.getText())) {
-            responseMessage = new Message("Задача не может быть выполнена");
-        } else {
-            responseMessage = tasksMap.get(requestMessage.getText()).execute(this);
+        if (requestMessage == null)
+        {
+            responseMessage = new Message("Задача не может быть выполнена", null);
+        }
+        else
+        {
+            if(requestMessage.getFileToSend() == null)
+            {
+                if("Требуется список файлов".equals(requestMessage.getText()))
+                {
+
+                }
+                responseMessage = requestMessage;
+            }
+            responseMessage = new Message(requestMessage.getFileDescription(),null);
         }
         write(readWrite, responseMessage);
     }
@@ -87,22 +96,17 @@ public class ServerApp {
                         .append(task.getDescription())
                         .append("\n");
             }
-            return new Message(builder.toString());
+            return new Message(builder.toString(), null);
         });
 
         Task requests = new Task("/requests", "количество успешно обработанных запросов", serverApp -> {
-            long numberOfRequests = serverApp.getTasksMap().values().stream()
-                    .mapToLong(Task::getExecuted).sum();
-            return new Message(String.valueOf(numberOfRequests));
+            long numberOfRequests = serverApp.getTasksMap().values().stream();
+            return new Message(String.valueOf(numberOfRequests),null);
         });
 
         Task popular = new Task("/popular", "название самого популярного запроса", serverApp -> {
-            String taskName = serverApp.getTasksMap().values().stream()
-                    .filter(task -> task.getExecuted() > 0)
-                    .max(Comparator.comparing(Task::getExecuted))
-                    .flatMap(task -> task.getName().describeConstable())
-                    .orElse("нет выполненных запросов");
-            return new Message(taskName);
+            String taskName = serverApp.getTasksMap().values().stream());
+            return new Message(taskName,null);
         });
 
         ServerApp serverApp = new ServerApp(2222);

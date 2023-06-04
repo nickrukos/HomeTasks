@@ -1,0 +1,4 @@
+cloth
+shoes
+bags
+books

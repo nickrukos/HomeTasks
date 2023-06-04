@@ -24,7 +24,6 @@ public class ReadWrite implements AutoCloseable{
         return null;
     }
     public void writeMessage(Message message) throws IOException {
-        message.setSent(LocalDateTime.now());
         output.writeObject(message);
         output.flush();
     }
