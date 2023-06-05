@@ -40,6 +40,8 @@ public class ServerApp {
 
     private void sendResponse(ReadWrite readWrite, Message requestMessage) { // выполнение запрошенной задачи
         Message responseMessage;
+        String text = null, upload = null;
+        FileToSend fileToSend = null
         if (requestMessage == null)
         {
             responseMessage = new Message("Задача не может быть выполнена", null,null);
