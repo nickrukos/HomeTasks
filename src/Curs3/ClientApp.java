@@ -29,6 +29,7 @@ public class ClientApp {
     public void run(){
         // Thread.sleep(млс);
         FileToSend fileToSend = null;
+        String uploadFile = null;
         Scanner scanner = new Scanner(System.in);
 
         while (true) {
@@ -76,7 +77,7 @@ public class ClientApp {
             try (Socket socket = new Socket(remote.getHostString(), remote.getPort());
                  ReadWrite readWrite = new ReadWrite(socket)){
                 // 2.3. создает экземпл€р сообщени€
-                Message message = new Message(text, fileToSend);
+                Message message = new Message(text, fileToSend, );
                 // 2.4. отправл€ет сообщение на сервер
                 readWrite.writeMessage(message);
                 // 2.5. получает ответ

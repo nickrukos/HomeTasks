@@ -10,7 +10,7 @@ public class ServerApp {
     private int port;
     //private boo
     private Map<String, Task> tasksMap;
-    private static List<FileToSend> listFiles;
+    private List<FileToSend> listFiles;
 
     public ServerApp(int port) {
         this.port = port;
@@ -42,7 +42,7 @@ public class ServerApp {
         Message responseMessage;
         if (requestMessage == null)
         {
-            responseMessage = new Message("Задача не может быть выполнена", null);
+            responseMessage = new Message("Задача не может быть выполнена", null,null);
         }
         else
         {
@@ -50,13 +50,19 @@ public class ServerApp {
             {
                 if("Требуется список файлов".equals(requestMessage.getText()))
                 {
-
+                    StringBuilder list = new StringBuilder();
+                    for(int i=0;i<listFiles.size();i++)
+                    {
+                        list.append("Файл: " + listFiles.get(i).getFileName() + "\n"
+                                    + "Описание файла: " + listFiles.get(i).getFileDescription());
+                    }
+                    responseMessage = new Message(list.toString(),null, null);
                 }
                 responseMessage = requestMessage;
             }
             responseMessage = new Message(requestMessage.getFileDescription(),null);
         }
-        write(readWrite, responseMessage);
+        //write(readWrite, responseMessage);  рассылка потом
     }
 
     private void write(ReadWrite readWrite, Message message) {

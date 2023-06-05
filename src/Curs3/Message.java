@@ -6,11 +6,12 @@ import java.time.LocalDateTime;
 public class Message implements Serializable {
     private String text;
     private FileToSend fileToSend;
-
-    public Message(String text, FileToSend fileToSend)
+    private String uploadFile;
+    public Message(String text, FileToSend fileToSend, String uploadFile)
     {
         this.text = text;
         if(fileToSend != null) this.fileToSend = fileToSend;
+        if(uploadFile != null) this.fileToSend = fileToSend;
     }
 
     public String getText()
