@@ -37,6 +37,8 @@ public class ClientApp {
             System.out.println("Введите текст или /exit для выхода");
             System.out.println("Для загрузки файла наберите '1'");
             System.out.println("Для получения списка файлов с сервера наберите '2'");
+            System.out.println("Для направления запроса на выбранный файл из списка нажмите '3'");
+            System.out.println("Для выхода наберите 'stop'");
             String text = scanner.nextLine();
             // И так до тех пор, пока пользователь не введет '/exit'
             if ("/exit".equals(text)) return;
@@ -73,11 +75,17 @@ public class ClientApp {
             {
                 text = "Требуется список файлов";
             }
+            if("3".equals(text))
+            {
+                System.out.println("Введите имя выбранного файла");
+                uploadFile = scanner.nextLine();
+                text = "Запрос на файл";
+            }
             // 2.2. устанавливает соединение с сервером
             try (Socket socket = new Socket(remote.getHostString(), remote.getPort());
                  ReadWrite readWrite = new ReadWrite(socket)){
                 // 2.3. создает экземпляр сообщения
-                Message message = new Message(text, fileToSend, );
+                Message message = new Message(text, fileToSend, uploadFile);
                 // 2.4. отправляет сообщение на сервер
                 readWrite.writeMessage(message);
                 // 2.5. получает ответ

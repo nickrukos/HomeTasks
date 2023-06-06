@@ -37,4 +37,7 @@ public class Message implements Serializable {
         this.fileToSend = fileToSend;
     }
 
+    public String getUploadFile() {
+        return uploadFile;
+    }
 }
