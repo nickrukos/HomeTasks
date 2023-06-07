@@ -10,7 +10,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 public class ServerApp {
     private int port;
     //private boo
-    CopyOnWriteArrayList<Socket> connections;
+    CopyOnWriteArrayList<ReadWrite> connections;
     private List<FileToSend> listFiles;
 
     public ServerApp(int port) {
@@ -25,30 +25,29 @@ public class ServerApp {
 
             while (true)
             {
+                Socket socket = serverSocket.accept();
                 new Thread( ()->{
-                                    Socket socket = null; // устанавливает соединение с клиентом
-                                    try {
-                                        socket = serverSocket.accept();
-                                    } catch (IOException e) {
-                                        e.printStackTrace();
-                                    }
                                     try (ReadWrite readWrite = new ReadWrite(socket))
                                     {
+                                        if(readWrite != null) connections.add(readWrite);
+                                        else throw new IOException("Отсутствует связь с клиентом");
                                         Message requestMessage = read(readWrite);
                                         if("stop".equals(requestMessage.getText()))
                                         {
-                                            for (int i = 0; i < connections.size(); i++) {
-                                                connections.removeIf()
-                                            }
+                                            connections.removeIf(x->Objects.equals(x,readWrite));
+                                            readWrite.close();
                                         }
-                                        sendResponse(readWrite, );
+                                        else if()
+                                        {
+
+                                        }
+                                        //sendResponse(readWrite, );
                                     } /*catch (ClassCastException e) {
                                     System.out.println("Класс Message не найден");
                                 }*/ catch (IOException e){
                                         System.out.println("Ошибка во время создания объекта");
                                     }
                                 }).start();
-
             }
         } catch (IOException e) {
             System.out.println("Ошибка создания serverSocket, например, указанный порт занят");
