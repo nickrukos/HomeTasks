@@ -29,17 +29,34 @@ public class ServerApp {
                 new Thread( ()->{
                                     try (ReadWrite readWrite = new ReadWrite(socket))
                                     {
-                                        if(readWrite != null) connections.add(readWrite);
+                                        if(readWrite != null)
+                                        {
+                                            if(!connections.contains(readWrite)) connections.add(readWrite);
+                                        }
                                         else throw new IOException("Отсутствует связь с клиентом");
                                         Message requestMessage = read(readWrite);
                                         if("stop".equals(requestMessage.getText()))
                                         {
+                                            //закрываем соединение
                                             connections.removeIf(x->Objects.equals(x,readWrite));
                                             readWrite.close();
                                         }
-                                        else if()
+                                        else if("Требуется список файлов".equals(requestMessage.getText())
+                                                || "Запрос на файл".equals(requestMessage.getText()))
                                         {
-
+                                            //посылаем текущему клиенту перечень файлов или запрошенный файл
+                                            sendResponse(readWrite,requestMessage);
+                                        }
+                                        else
+                                        {
+                                            //в остальных случаях прочитанное сообщение
+                                            //должно быть разослано всем клиентам за исключением текущего
+                                            connections.forEach(connection->{
+                                                                                if(!connection.equals(readWrite))
+                                                                                {
+                                                                                    sendResponse(connection,requestMessage);
+                                                                                }
+                                                                            });
                                         }
                                         //sendResponse(readWrite, );
                                     } /*catch (ClassCastException e) {

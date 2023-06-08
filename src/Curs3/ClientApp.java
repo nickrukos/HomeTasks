@@ -26,78 +26,78 @@ public class ClientApp {
         this.remote = remote;
     }
 
-    public void run(){
+    public void run() throws IOException{
         // Thread.sleep(млс);
-        FileToSend fileToSend = null;
-        String uploadFile = null;
-        Scanner scanner = new Scanner(System.in);
 
-        while (true) {
-            // 2.1. запрашивает текст сообщения (запрос) у пользователя
-            System.out.println("Введите текст или /exit для выхода");
-            System.out.println("Для загрузки файла наберите '1'");
-            System.out.println("Для получения списка файлов с сервера наберите '2'");
-            System.out.println("Для направления запроса на выбранный файл из списка нажмите '3'");
-            System.out.println("Для выхода наберите 'stop'");
-            String text = scanner.nextLine();
-            // И так до тех пор, пока пользователь не введет '/exit'
-            if ("/exit".equals(text)) return;
-            if("1".equals(text))
-            {
-                System.out.println("Введите путь к файлу");
-                String fileName = scanner.nextLine();
-                System.out.println("Введите описание файла");
-                String description = scanner.nextLine();
+        Socket socket = new Socket(remote.getHostString(), remote.getPort());
+        ReadWrite readWrite = new ReadWrite(socket);
+        new Thread(()-> {
+            FileToSend fileToSend = null;
+            String uploadFile = null;
+            Scanner scanner = new Scanner(System.in);
+            while (true) {
+                System.out.println("Введите текст");
+                System.out.println("Для загрузки файла наберите '1'");
+                System.out.println("Для получения списка файлов с сервера наберите '2'");
+                System.out.println("Для направления запроса на выбранный файл из списка нажмите '3'");
+                System.out.println("Для выхода наберите 'stop'");
+                String text = scanner.nextLine();
+                // И так до тех пор, пока пользователь не введет '/exit'
+                if ("1".equals(text)) {
+                    System.out.println("Введите путь к файлу");
+                    String fileName = scanner.nextLine();
+                    System.out.println("Введите описание файла");
+                    String description = scanner.nextLine();
+
+                    try {
+                        fileToSend = new FileToSend(fileName, description);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
+
+                    if (fileToSend == null) {
+                        System.out.println("Ваш файл несуществует");
+                        continue;
+                    }
+                    if (fileToSend.getFileSize() / 1048576 > Mb) {
+                        System.out.println("Размер файла больше " + String.valueOf(Mb) + " Мб.");
+                        continue;
+                    }
+                    if (fileToSend.getFileDescription().length() > N) {
+                        System.out.println(" Описание файла больше " + String.valueOf(N) + " символов");
+                        continue;
+                    }
+                    text = "Загрузка файла на сервер";
+                }
+                if ("2".equals(text)) {
+                    text = "Требуется список файлов";
+                }
+                if ("3".equals(text)) {
+                    System.out.println("Введите имя выбранного файла");
+                    uploadFile = scanner.nextLine();
+                    text = "Запрос на файл";
+                }
+                Message message = new Message(text, fileToSend, uploadFile);
+                // 2.4. отправляет сообщение на сервер
                 try {
-                    fileToSend = new FileToSend(fileName,description);
-
+                    readWrite.writeMessage(message);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                if(fileToSend == null)
-                {
-                    System.out.println("Ваш файл несуществует");
-                    continue;
-                }
-                if(fileToSend.getFileSize()/1048576 > Mb)
-                {
-                    System.out.println("Размер файла больше " + String.valueOf(Mb) + " Мб.");
-                    continue;
-                }
-                if(fileToSend.getFileDescription().length() > N)
-                {
-                    System.out.println(" Описание файла больше " + String.valueOf(N) + " символов");
-                    continue;
-                }
-                text = "Загрузка файла на сервер";
             }
-            if("2".equals(text))
-            {
-                text = "Требуется список файлов";
-            }
-            if("3".equals(text))
-            {
-                System.out.println("Введите имя выбранного файла");
-                uploadFile = scanner.nextLine();
-                text = "Запрос на файл";
-            }
+        }).start();
+
             // 2.2. устанавливает соединение с сервером
-            try (Socket socket = new Socket(remote.getHostString(), remote.getPort());
-                 ReadWrite readWrite = new ReadWrite(socket)){
+
                 // 2.3. создает экземпляр сообщения
-                Message message = new Message(text, fileToSend, uploadFile);
-                // 2.4. отправляет сообщение на сервер
-                readWrite.writeMessage(message);
+
                 // 2.5. получает ответ
                 Message fromServer = readWrite.readMessage();
                 // 2.6. выводит полученный ответ в консоль
                 System.out.println(fromServer.getText());
-            } catch (UnknownHostException e) {
-                System.out.println("Ошибка в IP сервера");
-            } catch (IOException e) {
-                System.out.println("Сервер не отвечает");
-            }
-        }
+
+
     }
 
     public static void main(String[] args) {
@@ -106,7 +106,11 @@ public class ClientApp {
         InetSocketAddress remote = new InetSocketAddress(ip, port);
 
         ClientApp clientApp = new ClientApp(remote);
-        clientApp.run();
+        try {
+            clientApp.run();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         /*
         InetSocketAddress local = new InetSocketAddress(ip, 1111);
