@@ -20,53 +20,75 @@ public class ServerApp {
     }
 
     public void run(){
-        try (ServerSocket serverSocket = new ServerSocket(port)){
+        try (ServerSocket serverSocket = new ServerSocket(port))
+        {
             System.out.println("Сервер запущен...");
-
             while (true)
             {
-                Socket socket = serverSocket.accept();
-                new Thread( ()->{
-                                    try (ReadWrite readWrite = new ReadWrite(socket))
+
+                new Thread(()->
+                {
+                   try
+                   {
+                       Socket socket = serverSocket.accept();
+                       ReadWrite readWrite = new ReadWrite(socket);
+                       if(!connections.contains(readWrite)) connections.add(readWrite);
+                       if(socket == null) System.out.println("socket is null");
+                       Message requestMessage = read(readWrite);
+                       if(requestMessage != null)
+                       {
+                           System.out.println("Есть связь с клиентом!");
+                           if("stop".equals(requestMessage.getText()))
+                           {
+                               //закрываем соединение
+                               connections.removeIf(x->Objects.equals(x,readWrite));
+                               readWrite.close();
+                               socket.close();
+                           }
+                           else if("Требуется список файлов".equals(requestMessage.getText())
+                                   || "Запрос на файл".equals(requestMessage.getText()))
+                           {
+                               //посылаем текущему клиенту перечень файлов или запрошенный файл
+                               sendResponse(readWrite,requestMessage);
+                           }
+                           else
+                           {
+                               //в остальных случаях прочитанное сообщение
+                               //должно быть разослано всем клиентам за исключением текущего
+                               connections.forEach(connection->
+                               {
+                                    if(!connection.equals(readWrite))
                                     {
-                                        if(readWrite != null)
-                                        {
-                                            if(!connections.contains(readWrite)) connections.add(readWrite);
-                                        }
-                                        else throw new IOException("Отсутствует связь с клиентом");
-                                        Message requestMessage = read(readWrite);
-                                        if("stop".equals(requestMessage.getText()))
-                                        {
-                                            //закрываем соединение
-                                            connections.removeIf(x->Objects.equals(x,readWrite));
-                                            readWrite.close();
-                                        }
-                                        else if("Требуется список файлов".equals(requestMessage.getText())
-                                                || "Запрос на файл".equals(requestMessage.getText()))
-                                        {
-                                            //посылаем текущему клиенту перечень файлов или запрошенный файл
-                                            sendResponse(readWrite,requestMessage);
-                                        }
-                                        else
-                                        {
-                                            //в остальных случаях прочитанное сообщение
-                                            //должно быть разослано всем клиентам за исключением текущего
-                                            connections.forEach(connection->{
-                                                                                if(!connection.equals(readWrite))
-                                                                                {
-                                                                                    sendResponse(connection,requestMessage);
-                                                                                }
-                                                                            });
-                                        }
-                                        //sendResponse(readWrite, );
-                                    } /*catch (ClassCastException e) {
-                                    System.out.println("Класс Message не найден");
-                                }*/ catch (IOException e){
-                                        System.out.println("Ошибка во время создания объекта");
+                                        sendResponse(connection,requestMessage);
                                     }
-                                }).start();
+                               });
+                           }
+                       }
+                       else
+                       {
+                           //Message = null
+                           System.out.println("Потеряна связь с клиентом!");
+                           //закрываем соединение
+                           if(readWrite != null)
+                           {
+                               connections.removeIf(x -> Objects.equals(x, readWrite));
+                               readWrite.close();
+                           }
+                           else
+                           {
+                               if(socket != null) socket.close();
+                           }
+                       }
+                   }
+                   catch (IOException e)
+                   {
+                       System.out.println("Ошибка во время создания объекта");
+                   }
+                }).start();
             }
-        } catch (IOException e) {
+        }
+        catch (IOException e)
+        {
             System.out.println("Ошибка создания serverSocket, например, указанный порт занят");
             e.printStackTrace();
         }
