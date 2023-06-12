@@ -2,12 +2,13 @@ package Curs3;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.Serializable;
 import java.nio.channels.FileChannel;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-public class FileToSend
+public class FileToSend implements Serializable
 {
     private String fileName;
     private String fileDescription;

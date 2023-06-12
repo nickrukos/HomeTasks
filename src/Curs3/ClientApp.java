@@ -13,7 +13,6 @@ public class ClientApp {
     private final int N = 256; //число символов в описании
     private final double Mb = 0.5;  //размер файла в мегабайтах
     private InetSocketAddress remote;
-    boolean flag;
 
     // При создании клиента в конструктор передается экземпляр InetSocketAddress,
     // который хранит IP сервера и порт.
@@ -25,7 +24,7 @@ public class ClientApp {
 
         Socket socket = new Socket(remote.getHostString(), remote.getPort());
         ReadWrite readWrite = new ReadWrite(socket);
-        Thread threadIn =  new Thread(()-> {
+        Thread threadIn = new Thread(()-> {
             FileToSend fileToSend = null;
             String uploadFile = null;
             Scanner scanner = new Scanner(System.in);
@@ -41,7 +40,6 @@ public class ClientApp {
                 if("exit".equals(text))
                 {
                     System.out.println("Завершаем работу");
-                    flag = true;
                     break;
                 }
                 if ("1".equals(text)) {
@@ -55,8 +53,8 @@ public class ClientApp {
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
-                    if (fileToSend == null) {
-                        System.out.println("Ваш файл несуществует");
+                    if (fileToSend.getFileName() == null) {
+                        System.out.println("Вы ввели несуществующий файл");
                         continue;
                     }
                     if (fileToSend.getFileSize() / 1048576 > Mb) {
@@ -91,9 +89,7 @@ public class ClientApp {
             {
                 Message fromServer = null;
                 try {
-                    if(!flag) {
-                        fromServer = readWrite.readMessage();
-                    }
+                    fromServer = readWrite.readMessage();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -102,10 +98,11 @@ public class ClientApp {
             }
 
         });
+        threadOut.setDaemon(true);
         threadIn.start();
         threadOut.start();
         threadIn.join();
-     //   threadOut.join();
+        //threadOut.join();
         if(readWrite != null)
         {
             readWrite.close();

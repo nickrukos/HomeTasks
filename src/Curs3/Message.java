@@ -40,4 +40,12 @@ public class Message implements Serializable {
     public String getUploadFile() {
         return uploadFile;
     }
+    public void setText(String text)
+    {
+        this.text = text;
+    }
+    public String getTextOnly()
+    {
+        return text;
+    }
 }
