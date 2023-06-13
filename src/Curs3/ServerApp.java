@@ -133,6 +133,7 @@ public class ServerApp {
                     for (int i = 0; i < listFiles.size(); i++) {
                         if (requestMessage.getUploadFile().equals(listFiles.get(i).getFileName())) {
                             fileToSend = listFiles.get(i);
+                            text = "Получение файла с сервера";
                             break;
                         }
                     }

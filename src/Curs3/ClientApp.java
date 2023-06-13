@@ -25,10 +25,11 @@ public class ClientApp {
         Socket socket = new Socket(remote.getHostString(), remote.getPort());
         ReadWrite readWrite = new ReadWrite(socket);
         Thread threadIn = new Thread(()-> {
-            FileToSend fileToSend = null;
-            String uploadFile = null;
+
             Scanner scanner = new Scanner(System.in);
             while (true) {
+                FileToSend fileToSend = null;
+                String uploadFile = null;
                 if(readWrite == null) break;
                 System.out.println("Введите текст");
                 System.out.println("Для загрузки файла наберите '1'");
