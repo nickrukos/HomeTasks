@@ -17,15 +17,13 @@ public class Message implements Serializable {
     public String getText()
     {
         if(fileToSend == null) return text;
-        return text + "\n Получен файл: " + fileToSend.getFileName()
-                + "\n" + fileToSend.getFileDescription()
-                + "\n" + fileToSend.getFileContent();
+        return text + "\nПолучен файл:\n" + fileToSend.getFileName()
+                + "\nОписание файла:\n" + fileToSend.getFileDescription()
+                + "\nСодержание файла:\n" + fileToSend.getFileContent();
     }
     public String getFileDescription()
     {
-        if(fileToSend == null) return text;
-        return text + "\n Получен файл: " + fileToSend.getFileName()
-                + "\n" + fileToSend.getFileDescription();
+        return fileToSend.getFileDescription();
     }
     public FileToSend getFileToSend()
     {

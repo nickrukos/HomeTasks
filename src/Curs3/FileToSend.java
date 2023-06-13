@@ -25,7 +25,7 @@ public class FileToSend implements Serializable
         }
         this.fileName = fileName;
         FileChannel fileChannel = FileChannel.open(path);
-        this.fileDescription = fileName + " " + description;
+        this.fileDescription = description;
         this.fileContent = new String(Files.readAllBytes(Paths.get(fileName)));
         this.fileSize = fileChannel.size();
     }

@@ -87,6 +87,7 @@ public class ClientApp {
         {
             while(true)
             {
+
                 Message fromServer = null;
                 try {
                     fromServer = readWrite.readMessage();

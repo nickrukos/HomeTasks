@@ -144,7 +144,7 @@ public class ServerApp {
                     text = requestMessage.getText();
                 }
             } else {
-                text = requestMessage.getText();
+                text = requestMessage.getTextOnly();
                 fileToSend = requestMessage.getFileToSend();
             }
 
