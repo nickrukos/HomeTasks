@@ -11,7 +11,7 @@ public class Message implements Serializable {
     {
         this.text = text;
         if(fileToSend != null) this.fileToSend = fileToSend;
-        if(uploadFile != null) this.fileToSend = fileToSend;
+        if(uploadFile != null) this.uploadFile = uploadFile;
     }
 
     public String getText()

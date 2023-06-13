@@ -121,7 +121,7 @@ public class ServerApp {
             text = "Задача не может быть выполнена";
         } else {
             if (requestMessage.getFileToSend() == null) {
-                if ("Требуется список файлов".equals(requestMessage.getText())) {
+                if ("Требуется список файлов".equals(requestMessage.getTextOnly())) {
                     StringBuilder list = new StringBuilder();
                     for (int i = 0; i < listFiles.size(); i++) {
                         list.append("Файл: " + listFiles.get(i).getFileName() + "\n"
@@ -129,9 +129,9 @@ public class ServerApp {
                     }
                     if(listFiles.size() == 0) text = "Файлы отсутствуют";
                     else  text = list.toString();
-                } else if ("Запрос на файл".equals(requestMessage.getText())) {
+                } else if ("Запрос на файл".equals(requestMessage.getTextOnly())) {
                     for (int i = 0; i < listFiles.size(); i++) {
-                        if (requestMessage.getUploadFile() == listFiles.get(i).getFileName()) {
+                        if (requestMessage.getUploadFile().equals(listFiles.get(i).getFileName())) {
                             fileToSend = listFiles.get(i);
                             break;
                         }
