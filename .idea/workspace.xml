@@ -4,15 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f66636e8-3fe3-49dc-bb30-b2e96bfa8ef3" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/5e63f636-85df-4ca4-835c-854464df5a0a.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/5e63f636-85df-4ca4-835c-854464df5a0a.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nickrukos/curs4/Alpinist.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nickrukos/curs4/Alpinist.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nickrukos/curs4/Group.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nickrukos/curs4/Group.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nickrukos/curs4/Mountain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nickrukos/curs4/Mountain.java" afterDir="false" />
-    </list>
+    <list default="true" id="f66636e8-3fe3-49dc-bb30-b2e96bfa8ef3" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -102,12 +94,35 @@
       <workItem from="1687037779640" duration="746000" />
       <workItem from="1687109767420" duration="9296000" />
       <workItem from="1687159530464" duration="1329000" />
-      <workItem from="1687160879203" duration="11607000" />
+      <workItem from="1687160879203" duration="11726000" />
     </task>
+    <task id="LOCAL-00001" summary="Курсовая 4&#10;Создание таблиц">
+      <created>1687182134730</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1687182134730</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Курсовая 4&#10;Создание таблиц" />
+    <option name="LAST_COMMIT_MESSAGE" value="Курсовая 4&#10;Создание таблиц" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
