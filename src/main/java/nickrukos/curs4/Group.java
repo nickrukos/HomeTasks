@@ -14,8 +14,6 @@ import java.util.ArrayList;
 public class Group extends Unique
 {
     @Column(nullable = false)
-    private int mountain_code;
-    @Column(nullable = false)
     private boolean open_sign;
     @Column(nullable = false)
     private LocalDate date_start;
@@ -26,7 +24,12 @@ public class Group extends Unique
     @Column(nullable = false)
     private LocalTime time_finish;
     @ManyToOne
+    @JoinColumn(name = "mountain_id", foreignKey = @ForeignKey(name="FK_mountain"))
     private Mountain mountain;
-    @ManyToMany(mappedBy = "groups")
+    @ManyToMany(cascade = CascadeType.PERSIST)
+    @JoinTable(name="tb_group_alpinist", joinColumns = @JoinColumn(name = "group_code",
+               foreignKey = @ForeignKey(name = "FK_group"), nullable = false),
+               inverseJoinColumns = @JoinColumn(name="alpinist_code", foreignKey = @ForeignKey(name = "FK_alpinists"),
+               nullable = false))
     private ArrayList<Alpinist> alpinists;
 }

@@ -9,9 +9,9 @@ import java.util.ArrayList;
 @Table(name="tb_mountain", schema = "itmo", indexes = {@Index(columnList = "code",unique = true)})
 public class Mountain extends Unique
 {
-    @Column(nullable = false)
+    @Column(columnDefinition = "TEXT NOT NULL")
     private String name;
-    @Column(nullable = false)
+    @Column(columnDefinition = "TEXT NOT NULL")
     private String country;
     @Column(nullable = false)
     private int height;

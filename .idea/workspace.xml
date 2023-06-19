@@ -5,20 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f66636e8-3fe3-49dc-bb30-b2e96bfa8ef3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/nickrukos/curs4/Alpinist.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/nickrukos/curs4/Group.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/nickrukos/curs4/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/nickrukos/curs4/Mountain.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/nickrukos/curs4/Unique.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/5e63f636-85df-4ca4-835c-854464df5a0a.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/5e63f636-85df-4ca4-835c-854464df5a0a.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nickrukos/curs4/Alpinist.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nickrukos/curs4/Alpinist.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nickrukos/curs4/Group.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nickrukos/curs4/Group.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nickrukos/curs4/Mountain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nickrukos/curs4/Mountain.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,22 +37,33 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
-  }
-}</component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+  </component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="nickrukos.curs4" />
     </key>
   </component>
   <component name="RunManager">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="19" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="MAIN_CLASS_NAME" value="nickrukos.curs4.Main" />
+      <module name="HomeTasks" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="nickrukos.curs4.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
@@ -67,19 +71,6 @@
         </value>
       </option>
       <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="nickrukos.curs4.Main" />
-      <module name="Curs4" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="nickrukos.curs4.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -110,6 +101,8 @@
       <workItem from="1687037323894" duration="436000" />
       <workItem from="1687037779640" duration="746000" />
       <workItem from="1687109767420" duration="9296000" />
+      <workItem from="1687159530464" duration="1329000" />
+      <workItem from="1687160879203" duration="11607000" />
     </task>
     <servers />
   </component>
@@ -123,11 +116,6 @@
           <properties class="java.lang.NullPointerException" package="java.lang" />
           <option name="timeStamp" value="1" />
         </breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/nickrukos/curs4/Main.java</url>
-          <line>10</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>

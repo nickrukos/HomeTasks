@@ -9,10 +9,10 @@ import java.util.ArrayList;
 @Table(name="tb_alpinist", schema = "itmo", indexes = {@Index(columnList = "code",unique = true)})
 public class Alpinist extends Unique
 {
-   @Column(nullable = false)
+   @Column(columnDefinition = "TEXT NOT NULL")
    private String fullName;
-   @Column(nullable = false)
+   @Column(columnDefinition = "TEXT NOT NULL")
    private String address;
    @ManyToMany(mappedBy = "alpinists")
-   private ArrayList<Group> groups;
+   private ArrayList<Group> groupAlpinists;
 }
