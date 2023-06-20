@@ -1,10 +1,12 @@
 package nickrukos.curs4;
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.Setter;
 
 import java.util.ArrayList;
 
 @Getter
+@Setter
 @Entity
 @Table(name="tb_alpinist", schema = "itmo", indexes = {@Index(columnList = "code",unique = true)})
 public class Alpinist extends Unique
@@ -15,4 +17,8 @@ public class Alpinist extends Unique
    private String address;
    @ManyToMany(mappedBy = "alpinists")
    private ArrayList<Group> groupAlpinists;
+   public Alpinist()
+   {
+      groupAlpinists = new ArrayList<>();
+   }
 }

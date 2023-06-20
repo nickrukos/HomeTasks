@@ -792,7 +792,7 @@ true posixrules
     <database id="3" parent="1" name="lessons">
       <ObjectId>17219</ObjectId>
       <Owner>postgres</Owner>
-      <IntrospectionStateNumber>987</IntrospectionStateNumber>
+      <IntrospectionStateNumber>1129</IntrospectionStateNumber>
       <Current>1</Current>
     </database>
     <database id="4" parent="1" name="postgres">
@@ -855,7 +855,7 @@ U/10
 </Acl>
       <StateNumber>947</StateNumber>
       <Owner>itmo</Owner>
-      <IntrospectionStateNumber>988</IntrospectionStateNumber>
+      <IntrospectionStateNumber>1130</IntrospectionStateNumber>
       <Current>1</Current>
     </schema>
     <schema id="16" parent="3" name="pg_catalog">
@@ -967,49 +967,49 @@ UC/10
       <Type>index</Type>
     </access-method>
     <table id="29" parent="15" name="tb_alpinist">
-      <ObjectId>17300</ObjectId>
+      <ObjectId>17654</ObjectId>
       <Owner>itmo</Owner>
-      <StateNumber>981</StateNumber>
+      <StateNumber>1125</StateNumber>
     </table>
     <table id="30" parent="15" name="tb_group">
-      <ObjectId>17308</ObjectId>
+      <ObjectId>17662</ObjectId>
       <Owner>itmo</Owner>
-      <StateNumber>982</StateNumber>
+      <StateNumber>1126</StateNumber>
     </table>
-    <table id="31" parent="15" name="tb_group_tb_alpinist">
-      <ObjectId>17321</ObjectId>
+    <table id="31" parent="15" name="tb_group_alpinist">
+      <ObjectId>17675</ObjectId>
       <Owner>itmo</Owner>
-      <StateNumber>982</StateNumber>
+      <StateNumber>1126</StateNumber>
     </table>
     <table id="32" parent="15" name="tb_mountain">
-      <ObjectId>17313</ObjectId>
+      <ObjectId>17667</ObjectId>
       <Owner>itmo</Owner>
-      <StateNumber>980</StateNumber>
+      <StateNumber>1124</StateNumber>
     </table>
     <column id="33" parent="29" name="code">
       <Position>1</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>976</StateNumber>
+      <StateNumber>1120</StateNumber>
       <TypeId>23</TypeId>
     </column>
     <column id="34" parent="29" name="address">
       <Position>2</Position>
-      <DataType>varchar(255)|0s</DataType>
+      <DataType>text|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>976</StateNumber>
-      <TypeId>1043</TypeId>
+      <StateNumber>1120</StateNumber>
+      <TypeId>25</TypeId>
     </column>
     <column id="35" parent="29" name="fullname">
       <Position>3</Position>
-      <DataType>varchar(255)|0s</DataType>
+      <DataType>text|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>976</StateNumber>
-      <TypeId>1043</TypeId>
+      <StateNumber>1120</StateNumber>
+      <TypeId>25</TypeId>
     </column>
     <index id="36" parent="29" name="tb_alpinist_pkey">
-      <ObjectId>17306</ObjectId>
-      <StateNumber>976</StateNumber>
+      <ObjectId>17660</ObjectId>
+      <StateNumber>1120</StateNumber>
       <ColNames>code</ColNames>
       <Unique>1</Unique>
       <Primary>1</Primary>
@@ -1018,8 +1018,8 @@ UC/10
       <ClassIds>1978</ClassIds>
     </index>
     <key id="37" parent="29" name="tb_alpinist_pkey">
-      <ObjectId>17307</ObjectId>
-      <StateNumber>976</StateNumber>
+      <ObjectId>17661</ObjectId>
+      <StateNumber>1120</StateNumber>
       <ColNames>code</ColNames>
       <Primary>1</Primary>
       <UnderlyingIndexName>tb_alpinist_pkey</UnderlyingIndexName>
@@ -1028,53 +1028,53 @@ UC/10
       <Position>1</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>977</StateNumber>
+      <StateNumber>1121</StateNumber>
       <TypeId>23</TypeId>
     </column>
     <column id="39" parent="30" name="date_finish">
       <Position>2</Position>
       <DataType>date|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>977</StateNumber>
+      <StateNumber>1121</StateNumber>
       <TypeId>1082</TypeId>
     </column>
     <column id="40" parent="30" name="date_start">
       <Position>3</Position>
       <DataType>date|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>977</StateNumber>
+      <StateNumber>1121</StateNumber>
       <TypeId>1082</TypeId>
     </column>
-    <column id="41" parent="30" name="mountain_code">
+    <column id="41" parent="30" name="mountain_id">
       <Position>4</Position>
       <DataType>integer|0s</DataType>
-      <StateNumber>977</StateNumber>
+      <StateNumber>1121</StateNumber>
       <TypeId>23</TypeId>
     </column>
     <column id="42" parent="30" name="open_sign">
       <Position>5</Position>
       <DataType>boolean|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>977</StateNumber>
+      <StateNumber>1121</StateNumber>
       <TypeId>16</TypeId>
     </column>
     <column id="43" parent="30" name="time_finish">
       <Position>6</Position>
       <DataType>time(6)|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>977</StateNumber>
+      <StateNumber>1121</StateNumber>
       <TypeId>1083</TypeId>
     </column>
     <column id="44" parent="30" name="time_start">
       <Position>7</Position>
       <DataType>time(6)|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>977</StateNumber>
+      <StateNumber>1121</StateNumber>
       <TypeId>1083</TypeId>
     </column>
     <index id="45" parent="30" name="tb_group_pkey">
-      <ObjectId>17311</ObjectId>
-      <StateNumber>977</StateNumber>
+      <ObjectId>17665</ObjectId>
+      <StateNumber>1121</StateNumber>
       <ColNames>code</ColNames>
       <Unique>1</Unique>
       <Primary>1</Primary>
@@ -1083,51 +1083,51 @@ UC/10
       <ClassIds>1978</ClassIds>
     </index>
     <key id="46" parent="30" name="tb_group_pkey">
-      <ObjectId>17312</ObjectId>
-      <StateNumber>977</StateNumber>
+      <ObjectId>17666</ObjectId>
+      <StateNumber>1121</StateNumber>
       <ColNames>code</ColNames>
       <Primary>1</Primary>
       <UnderlyingIndexName>tb_group_pkey</UnderlyingIndexName>
     </key>
-    <foreign-key id="47" parent="30" name="fkw7bikhlqbjh917ruhg908onw">
-      <ObjectId>17324</ObjectId>
-      <StateNumber>980</StateNumber>
-      <ColNames>mountain_code</ColNames>
-      <RefTableId>17313</RefTableId>
+    <foreign-key id="47" parent="30" name="fk_mountain">
+      <ObjectId>17678</ObjectId>
+      <StateNumber>1124</StateNumber>
+      <ColNames>mountain_id</ColNames>
+      <RefTableId>17667</RefTableId>
       <RefColPositions>1</RefColPositions>
       <RefTableName>tb_mountain</RefTableName>
       <RefKeyName>tb_mountain_pkey</RefKeyName>
       <RefColNames>code</RefColNames>
     </foreign-key>
-    <column id="48" parent="31" name="alpinists_code">
+    <column id="48" parent="31" name="alpinist_code">
       <Position>1</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>979</StateNumber>
+      <StateNumber>1123</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="49" parent="31" name="groups_code">
+    <column id="49" parent="31" name="group_code">
       <Position>2</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>979</StateNumber>
+      <StateNumber>1123</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <foreign-key id="50" parent="31" name="fk64hr4aebn5ramm6laeefghhdy">
-      <ObjectId>17329</ObjectId>
-      <StateNumber>981</StateNumber>
-      <ColNames>alpinists_code</ColNames>
-      <RefTableId>17300</RefTableId>
+    <foreign-key id="50" parent="31" name="fk_alpinists">
+      <ObjectId>17683</ObjectId>
+      <StateNumber>1125</StateNumber>
+      <ColNames>alpinist_code</ColNames>
+      <RefTableId>17654</RefTableId>
       <RefColPositions>1</RefColPositions>
       <RefTableName>tb_alpinist</RefTableName>
       <RefKeyName>tb_alpinist_pkey</RefKeyName>
       <RefColNames>code</RefColNames>
     </foreign-key>
-    <foreign-key id="51" parent="31" name="fkka7si1dlrq7ywuudnbj7mcnv3">
-      <ObjectId>17334</ObjectId>
-      <StateNumber>982</StateNumber>
-      <ColNames>groups_code</ColNames>
-      <RefTableId>17308</RefTableId>
+    <foreign-key id="51" parent="31" name="fk_group">
+      <ObjectId>17688</ObjectId>
+      <StateNumber>1126</StateNumber>
+      <ColNames>group_code</ColNames>
+      <RefTableId>17662</RefTableId>
       <RefColPositions>1</RefColPositions>
       <RefTableName>tb_group</RefTableName>
       <RefKeyName>tb_group_pkey</RefKeyName>
@@ -1137,33 +1137,33 @@ UC/10
       <Position>1</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>978</StateNumber>
+      <StateNumber>1122</StateNumber>
       <TypeId>23</TypeId>
     </column>
     <column id="53" parent="32" name="height">
       <Position>2</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>978</StateNumber>
+      <StateNumber>1122</StateNumber>
       <TypeId>23</TypeId>
     </column>
     <column id="54" parent="32" name="country">
       <Position>3</Position>
-      <DataType>varchar(255)|0s</DataType>
+      <DataType>text|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>978</StateNumber>
-      <TypeId>1043</TypeId>
+      <StateNumber>1122</StateNumber>
+      <TypeId>25</TypeId>
     </column>
     <column id="55" parent="32" name="name">
       <Position>4</Position>
-      <DataType>varchar(255)|0s</DataType>
+      <DataType>text|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>978</StateNumber>
-      <TypeId>1043</TypeId>
+      <StateNumber>1122</StateNumber>
+      <TypeId>25</TypeId>
     </column>
     <index id="56" parent="32" name="tb_mountain_pkey">
-      <ObjectId>17319</ObjectId>
-      <StateNumber>978</StateNumber>
+      <ObjectId>17673</ObjectId>
+      <StateNumber>1122</StateNumber>
       <ColNames>code</ColNames>
       <Unique>1</Unique>
       <Primary>1</Primary>
@@ -1172,8 +1172,8 @@ UC/10
       <ClassIds>1978</ClassIds>
     </index>
     <key id="57" parent="32" name="tb_mountain_pkey">
-      <ObjectId>17320</ObjectId>
-      <StateNumber>978</StateNumber>
+      <ObjectId>17674</ObjectId>
+      <StateNumber>1122</StateNumber>
       <ColNames>code</ColNames>
       <Primary>1</Primary>
       <UnderlyingIndexName>tb_mountain_pkey</UnderlyingIndexName>
