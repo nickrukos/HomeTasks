@@ -5,14 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f66636e8-3fe3-49dc-bb30-b2e96bfa8ef3" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/5e63f636-85df-4ca4-835c-854464df5a0a.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/5e63f636-85df-4ca4-835c-854464df5a0a.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/5e63f636-85df-4ca4-835c-854464df5a0a/storage_v2/_src_/database/lessons.O_oEBA/schema/itmo.DXwxAA.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/5e63f636-85df-4ca4-835c-854464df5a0a/storage_v2/_src_/database/lessons.O_oEBA/schema/itmo.DXwxAA.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/nickrukos/curs4/Alpinist.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nickrukos/curs4/Alpinist.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/nickrukos/curs4/Group.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nickrukos/curs4/Group.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nickrukos/curs4/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nickrukos/curs4/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/nickrukos/curs4/Mountain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nickrukos/curs4/Mountain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nickrukos/curs4/Unique.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nickrukos/curs4/Unique.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,19 +61,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
@@ -106,7 +89,8 @@
       <workItem from="1687109767420" duration="9296000" />
       <workItem from="1687159530464" duration="1329000" />
       <workItem from="1687160879203" duration="12905000" />
-      <workItem from="1687243398435" duration="2524000" />
+      <workItem from="1687243398435" duration="2979000" />
+      <workItem from="1687246721799" duration="1356000" />
     </task>
     <task id="LOCAL-00001" summary="Курсовая 4&#10;Создание таблиц">
       <created>1687182134730</created>
@@ -122,7 +106,14 @@
       <option name="project" value="LOCAL" />
       <updated>1687182907289</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Курсовая № 4&#10;Создание БД и ввод данных с constraint'ами">
+      <created>1687246268625</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1687246268625</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -143,7 +134,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Курсовая 4&#10;Создание таблиц" />
     <MESSAGE value="Курсовая 4&#10;Создание таблиц доп" />
-    <option name="LAST_COMMIT_MESSAGE" value="Курсовая 4&#10;Создание таблиц доп" />
+    <MESSAGE value="Курсовая № 4&#10;Создание БД и ввод данных с constraint'ами" />
+    <option name="LAST_COMMIT_MESSAGE" value="Курсовая № 4&#10;Создание БД и ввод данных с constraint'ами" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

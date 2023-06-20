@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -16,7 +17,7 @@ public class Alpinist extends Unique
    @Column(columnDefinition = "TEXT NOT NULL")
    private String address;
    @ManyToMany(mappedBy = "alpinists")
-   private ArrayList<Group> groupAlpinists;
+   private List<Group> groupAlpinists;
    public Alpinist()
    {
       groupAlpinists = new ArrayList<>();

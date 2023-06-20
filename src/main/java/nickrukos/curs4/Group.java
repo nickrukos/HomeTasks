@@ -7,6 +7,7 @@ import lombok.Setter;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -33,7 +34,7 @@ public class Group extends Unique
                foreignKey = @ForeignKey(name = "FK_group"), nullable = false),
                inverseJoinColumns = @JoinColumn(name="alpinist_code", foreignKey = @ForeignKey(name = "FK_alpinists"),
                nullable = false))
-    private ArrayList<Alpinist> alpinists = new ArrayList<>();
+    private List<Alpinist> alpinists = new ArrayList<>();
     public void addAlpinist(Alpinist alpinist)
     {
         this.alpinists.add(alpinist);
