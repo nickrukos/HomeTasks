@@ -7,8 +7,8 @@
     <list default="true" id="f66636e8-3fe3-49dc-bb30-b2e96bfa8ef3" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/nickrukos/curs4/Alpinist.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nickrukos/curs4/Alpinist.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nickrukos/curs4/Group.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nickrukos/curs4/Group.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nickrukos/curs4/Mountain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nickrukos/curs4/Mountain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nickrukos/curs4/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,7 +45,20 @@
       <recent name="nickrukos.curs4" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.Application">
+    <configuration name="Application" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="nickrukos.curs4.Application" />
+      <module name="HomeTasks" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="nickrukos.curs4.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="ALTERNATIVE_JRE_PATH" value="19" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
@@ -61,8 +74,20 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Application" />
         <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
@@ -91,6 +116,9 @@
       <workItem from="1687160879203" duration="12905000" />
       <workItem from="1687243398435" duration="2979000" />
       <workItem from="1687246721799" duration="1356000" />
+      <workItem from="1687271028804" duration="718000" />
+      <workItem from="1687519293304" duration="114000" />
+      <workItem from="1687519460461" duration="6098000" />
     </task>
     <task id="LOCAL-00001" summary="Курсовая 4&#10;Создание таблиц">
       <created>1687182134730</created>
@@ -113,7 +141,14 @@
       <option name="project" value="LOCAL" />
       <updated>1687246268625</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Курсовая 4&#10;Создание БД и тестовый ввод данных">
+      <created>1687271135790</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1687271135790</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -135,7 +170,8 @@
     <MESSAGE value="Курсовая 4&#10;Создание таблиц" />
     <MESSAGE value="Курсовая 4&#10;Создание таблиц доп" />
     <MESSAGE value="Курсовая № 4&#10;Создание БД и ввод данных с constraint'ами" />
-    <option name="LAST_COMMIT_MESSAGE" value="Курсовая № 4&#10;Создание БД и ввод данных с constraint'ами" />
+    <MESSAGE value="Курсовая 4&#10;Создание БД и тестовый ввод данных" />
+    <option name="LAST_COMMIT_MESSAGE" value="Курсовая 4&#10;Создание БД и тестовый ввод данных" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
